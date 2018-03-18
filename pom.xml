@@ -13,7 +13,7 @@
 
 	<inceptionYear>2017</inceptionYear>
 	<organization>
-		<name>hedgedoge21490-github</name>
+		<name>tonikolaba</name>
 	</organization>
 
 
@@ -185,8 +185,6 @@
 		</plugins>
 	</build>
 
-	
-	
 	<ciManagement>
 		<system>travis-ci</system>
 		<url>https://travis-ci.org/Hedgedoge21490/BatBat-Game</url>
