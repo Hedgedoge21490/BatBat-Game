@@ -13,7 +13,7 @@
 
 	<inceptionYear>2017</inceptionYear>
 	<organization>
-		<name>tonikolaba</name>
+		<name>hedgedoge21490-github</name>
 	</organization>
 
 
@@ -59,6 +59,8 @@
 	</dependencies>
 
 	<build>
+	<defaultGoal>clean install</defaultGoal>
+        <sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -183,8 +185,10 @@
 		</plugins>
 	</build>
 
+	
+	
 	<ciManagement>
 		<system>travis-ci</system>
-		<url>https://travis-ci.org/tonikolaba/BatBat-Game</url>
+		<url>https://travis-ci.org/Hedgedoge21490/BatBat-Game</url>
 	</ciManagement>
 </project>
