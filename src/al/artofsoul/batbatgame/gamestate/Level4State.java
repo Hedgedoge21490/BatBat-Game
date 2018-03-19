@@ -367,7 +367,7 @@ public class Level4State extends GameState {
             trp.setVector(0.3, -0.3);
             blp.setVector(-0.3, 0.3);
             brp.setVector(0.3, 0.3);
-            player.setEmote(Player.emoteSURPRISED);
+            player.setEmote(Player.EMOTESURPRISED);
         }
         if (eventCount == 240) {
             tlp.setVector(0, -5);
@@ -376,7 +376,7 @@ public class Level4State extends GameState {
             brp.setVector(0, -5);
         }
         if (eventCount == 300) {
-            player.setEmote(Player.emoteNONE);
+            player.setEmote(Player.EMOTENONE);
             portal.setOpening();
         }
         if (eventCount == 360) {
