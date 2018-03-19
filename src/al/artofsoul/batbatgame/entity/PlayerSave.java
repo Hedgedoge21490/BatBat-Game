@@ -10,7 +10,11 @@ public class PlayerSave {
 	private static int lives = 3;
 	private static int health = 5;
 	private static long time = 0;
-	
+
+	private PlayerSave(){
+		//Empty Constructor to hide implicit private one.
+	}
+
 	public static void init() {
 		lives = 3;
 		health = 5;

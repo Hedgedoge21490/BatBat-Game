@@ -90,9 +90,7 @@ public class Portal extends MapObject {
 			animation.setDelay(2);
 		}
 	}
-	
-	public void draw(Graphics2D g) {
-		super.draw(g);
-	}
+
+	//Draw Methode wird geerbt.
 	
 }

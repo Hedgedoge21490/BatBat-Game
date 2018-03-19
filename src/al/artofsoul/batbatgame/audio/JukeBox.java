@@ -18,10 +18,9 @@ public class JukeBox {
 	private static int gap;
 	private static boolean mute = false;
 
-	//Empty Constructor to hide implicit private one.
 	private JukeBox ()
 	{
-
+		//Empty Constructor to hide implicit private one.
 	}
 
 	public static void playerJump(){
