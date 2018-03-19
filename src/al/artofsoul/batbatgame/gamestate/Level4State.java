@@ -9,8 +9,7 @@ import al.artofsoul.batbatgame.entity.batbat.TopRightPiece;
 import al.artofsoul.batbatgame.entity.enemies.RedEnergy;
 import al.artofsoul.batbatgame.handlers.Keys;
 import al.artofsoul.batbatgame.main.GamePanel;
-import al.artofsoul.batbatgame.tilemap.Background;
-import al.artofsoul.batbatgame.tilemap.TileMap;
+
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -21,68 +20,28 @@ import java.util.ArrayList;
 
 public class Level4State extends GameState {
 
-    private Background temple;
-
-    private Player player;
-    private TileMap tileMap;
-    private ArrayList<Enemy> enemies;
-    private ArrayList<EnergyParticle> energyParticles;
-    private ArrayList<Explosion> explosions;
-
-    private HUD hud;
-
     private TopLeftPiece tlp;
     private TopRightPiece trp;
     private BottomLeftPiece blp;
     private BottomRightPiece brp;
-    private Portal portal;
 
     private Spirit spirit;
 
     // events
-    private boolean blockInput = false;
-    private int eventCount = 0;
-    private boolean eventStart;
-    private ArrayList<Rectangle> tb;
-    private boolean eventFinish;
     private boolean eventDead;
-    private boolean eventPortal;
     private boolean flash;
     private boolean eventBossDead;
 
     public Level4State(GameStateManager gsm) {
-        super(gsm);
+        super(gsm,4);
         init();
     }
 
     public void init() {
 
-        // backgrounds
-        temple = new Background("/Backgrounds/temple.gif", 0.5, 0);
-
-        tileMap = new TileMap(30, "/Tilesets/ruinstileset.gif", "/Maps/level4.map", 140,0,1);
-
-        player = new Player(tileMap, 50, 190);
-
-        // explosions
-        explosions = new ArrayList<Explosion>();
-
-        // enemies
-        enemies = new ArrayList<Enemy>();
         populateEnemies();
 
-        // energy particle
-        energyParticles = new ArrayList<EnergyParticle>();
-
-        // init player
         player.init(enemies, energyParticles);
-
-        // hud
-        hud = new HUD(player);
-
-        // portal
-        portal = new Portal(tileMap);
-        portal.setPosition(160, 154);
 
         // angelspop
         tlp = new TopLeftPiece(tileMap);
@@ -99,11 +58,6 @@ public class Level4State extends GameState {
         tb = new ArrayList<Rectangle>();
         eventStart();
 
-        // sfx
-        JukeBox.load("/SFX/teleport.mp3", "teleport");
-        JukeBox.load("/SFX/explode.mp3", "explode");
-        JukeBox.load("/SFX/enemyhit.mp3", "enemyhit");
-
         // music
         JukeBox.load("/Music/level1boss.mp3", "level1boss");
         //JukeBox.load("/Music/fanfare.mp3", "fanfare");
@@ -118,70 +72,28 @@ public class Level4State extends GameState {
     }
 
     public void update() {
-
-        // check keys
-        handleInput();
+        super.update();
 
         // check if boss dead event should start
         if (!eventFinish && spirit.isDead()) {
             eventBossDead = blockInput = true;
         }
 
-        // check if player dead event should start
-        if (player.getHealth() == 0 || player.gety() > tileMap.getHeight()) {
-            eventDead = blockInput = true;
-        }
-
         // play events
-        if (eventStart) eventStart();
         if (eventDead) eventDead();
-        if (eventFinish) eventFinish();
         if (eventPortal) eventPortal();
         if (eventBossDead) eventBossDead();
 
         // move backgrounds
         temple.setPosition(tileMap.getx(), tileMap.gety());
 
-        // update player
-        player.update();
-
-        // update tilemap
-        tileMap.setPosition(
-                GamePanel.WIDTH / 2.0 - player.getx(),
-                GamePanel.HEIGHT / 2.0 - player.gety()
-        );
-        tileMap.update();
-        tileMap.fixBounds();
-
-        // update enemies
-        for (int i = 0; i < enemies.size(); i++) {
-            Enemy e = enemies.get(i);
-            e.update();
-            if (e.isDead() || e.shouldRemove()) {
-                enemies.remove(i);
-                i--;
-                explosions.add(new Explosion(tileMap, e.getx(), e.gety()));
-            }
-        }
-
-        // update explosions
-        for (int i = 0; i < explosions.size(); i++) {
-            explosions.get(i).update();
-            if (explosions.get(i).shouldRemove()) {
-                explosions.remove(i);
-                i--;
-            }
-        }
-
         // update portal
         portal.update();
-
-        // update BATBAT
+        // update Portal Thingi
         tlp.update();
         trp.update();
         blp.update();
         brp.update();
-
     }
 
     public void draw(Graphics2D g) {
@@ -255,34 +167,7 @@ public class Level4State extends GameState {
         populateEnemies();
         eventStart = blockInput = true;
         eventCount = 0;
-        eventStart();
-    }
-
-    // level started
-    private void eventStart() {
-        eventCount++;
-        if (eventCount == 1) {
-            tb.clear();
-            tb.add(new Rectangle(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT / 2));
-            tb.add(new Rectangle(0, 0, GamePanel.WIDTH / 2, GamePanel.HEIGHT));
-            tb.add(new Rectangle(0, GamePanel.HEIGHT / 2, GamePanel.WIDTH, GamePanel.HEIGHT / 2));
-            tb.add(new Rectangle(GamePanel.WIDTH / 2, 0, GamePanel.WIDTH / 2, GamePanel.HEIGHT));
-            if (!portal.isOpened()) tileMap.setShaking(true, 10);
-            JukeBox.stop("level1");
-        }
-        if (eventCount > 1 && eventCount < 60) {
-            tb.get(0).height -= 4;
-            tb.get(1).width -= 6;
-            tb.get(2).y += 4;
-            tb.get(3).x += 6;
-        }
-        if (eventCount == 60) {
-            eventStart = blockInput = false;
-            eventCount = 0;
-            eventPortal = blockInput = true;
-            tb.clear();
-
-        }
+        super.eventStart();
     }
 
     // player has died
@@ -315,6 +200,7 @@ public class Level4State extends GameState {
     }
 
     // finished level
+    /*
     private void eventFinish() {
         eventCount++;
         if (eventCount == 1) {
@@ -335,6 +221,7 @@ public class Level4State extends GameState {
         }
 
     }
+    */
 
     private void eventPortal() {
         eventCount++;

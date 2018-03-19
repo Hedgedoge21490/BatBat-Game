@@ -39,7 +39,7 @@ public class MapPiece extends MapObject {
                     sprites[0] = spritesheet.getSubimage(0, 0, 10, 10);
                     break;
 
-                case "TopRichtPiece":
+                case "TopRightPiece":
                     sprites[0] = spritesheet.getSubimage(10, 0, 10, 10);
                     break;
 
