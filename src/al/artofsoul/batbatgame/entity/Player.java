@@ -271,9 +271,21 @@ public class Player extends MapObject {
 		left = right = up = down = flinching = 
 			dashing = jumping = attacking = upattacking = charging = false;
 	}
-	
 
-
+	private void nextPositionNonMovement(){
+		if(dx > 0) {
+			dx -= stopSpeed;
+			if(dx < 0) {
+				dx = 0;
+			}
+		}
+		else{
+			dx += stopSpeed;
+			if(dx > 0) {
+				dx = 0;
+			}
+		}
+	}
 	private void nextPositionMovement(){
 
 		double maxSpeed = this.maxSpeed;
@@ -293,18 +305,7 @@ public class Player extends MapObject {
 			}
 		}
 		else {
-			if(dx > 0) {
-				dx -= stopSpeed;
-				if(dx < 0) {
-					dx = 0;
-				}
-			}
-			else{
-				dx += stopSpeed;
-				if(dx > 0) {
-					dx = 0;
-				}
-			}
+			nextPositionNonMovement();
 		}
 	}
 	private void nextPositionJumping(){
@@ -367,7 +368,6 @@ public class Player extends MapObject {
 
 		nextPositionKnockback();
 
-
 		nextPositionMovement();
 
 		cannotMoveWhileAttacking();
@@ -429,11 +429,11 @@ public class Player extends MapObject {
 	public void checkAttackFinished(){
 		// check attack finished
 		if(currentAction == ANIMATIONATTACKING ||
-				currentAction == ANIMATIONUPATTACKING) {
-			if(animation.hasPlayedOnce()) {
-				attacking = false;
-				upattacking = false;
-			}
+				currentAction == ANIMATIONUPATTACKING &&
+						animation.hasPlayedOnce())
+		{
+			attacking = false;
+			upattacking = false;
 		}
 		if(currentAction == ANIMATIONCHARGING) {
 			if(animation.hasPlayed(5)) {
@@ -458,40 +458,37 @@ public class Player extends MapObject {
 								EnergyParticle.leftdir));
 		}
 	}
+
+	public void checkAttacks(Enemy e){
+
+		// check attack
+		if(currentAction == ANIMATIONATTACKING &&
+				animation.getFrame() == 3 && animation.getCount() == 0 &&
+					e.intersects(ar)) {
+				e.hit(damage);
+		}
+
+		// check upward attack
+		if(currentAction == ANIMATIONUPATTACKING &&
+				animation.getFrame() == 3 && animation.getCount() == 0 &&
+					e.intersects(aur)) {
+				e.hit(damage);
+		}
+
+		// check charging attack
+		if(currentAction == ANIMATIONCHARGING && animation.getCount() == 0 && e.intersects(cr)) {
+			e.hit(chargeDamage);
+		}
+	}
+
 	public void checkEnemyInteraction(){
 		// check enemy interaction
 		for(int i = 0; i < enemies.size(); i++) {
 
 			Enemy e = enemies.get(i);
 
-			// check attack
-			if(currentAction == ANIMATIONATTACKING &&
-					animation.getFrame() == 3 && animation.getCount() == 0) {
-				if(e.intersects(ar)) {
-					e.hit(damage);
-				}
-			}
-
-			// check upward attack
-			if(currentAction == ANIMATIONUPATTACKING &&
-					animation.getFrame() == 3 && animation.getCount() == 0) {
-				if(e.intersects(aur)) {
-					e.hit(damage);
-				}
-			}
-
-			// check charging attack
-			if(currentAction == ANIMATIONCHARGING) {
-				if(animation.getCount() == 0) {
-					if(e.intersects(cr)) {
-						e.hit(chargeDamage);
-					}
-					/*if(e.intersects(this)) {
-						e.hit(chargeDamage);
-					}*/
-				}
-			}
-
+			checkAttacks(e);
+			
 			// collision with enemy
 			if(!e.isDead() && intersects(e) && !charging) {
 				hit(e.getDamage());
