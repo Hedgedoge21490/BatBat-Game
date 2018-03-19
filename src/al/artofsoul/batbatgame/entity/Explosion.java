@@ -68,7 +68,8 @@ public class Explosion extends MapObject {
 	}
 	
 	public boolean shouldRemove() { return remove; }
-	
+
+	@Override
 	public void draw(Graphics2D g) {
 		setMapPosition();
 		for(int i = 0; i < points.length; i++) {

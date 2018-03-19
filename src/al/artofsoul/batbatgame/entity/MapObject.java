@@ -124,6 +124,51 @@ public abstract class MapObject {
 		bottomLeft = bl == Tile.BLOCKED;
 		bottomRight = br == Tile.BLOCKED;
 	}
+
+	public void cornerCheckX (){
+		if(dy < 0) {
+			if(topLeft || topRight) {
+				dy = 0;
+				ytemp = currRow * tileSize + cheight / 2.0;
+			}
+			else {
+				ytemp += dy;
+			}
+		}
+
+		if(dy > 0) {
+			if(bottomLeft || bottomRight) {
+				dy = 0;
+				falling = false;
+				ytemp = (currRow + 1) * tileSize - cheight / 2.0;
+			}
+			else {
+				ytemp += dy;
+			}
+		}
+	}
+
+	public void cornerCheckY (){
+		if(dx < 0) {
+			if(topLeft || bottomLeft) {
+				dx = 0;
+				xtemp = currCol * tileSize + cwidth / 2.0;
+			}
+			else {
+				xtemp += dx;
+			}
+		}
+
+		if(dx > 0) {
+			if(topRight || bottomRight) {
+				dx = 0;
+				xtemp = (currCol + 1) * tileSize - cwidth / 2.0;
+			}
+			else {
+				xtemp += dx;
+			}
+		}
+	}
 	
 	public void checkTileMapCollision() {
 		
@@ -137,45 +182,11 @@ public abstract class MapObject {
 		ytemp = y;
 		
 		calculateCorners(x, ydest);
-		if(dy < 0) {
-			if(topLeft || topRight) {
-				dy = 0;
-				ytemp = currRow * tileSize + cheight / 2.0;
-			}
-			else {
-				ytemp += dy;
-			}
-		}
-		if(dy > 0) {
-			if(bottomLeft || bottomRight) {
-				dy = 0;
-				falling = false;
-				ytemp = (currRow + 1) * tileSize - cheight / 2.0;
-			}
-			else {
-				ytemp += dy;
-			}
-		}
+		cornerCheckX();
 		
 		calculateCorners(xdest, y);
-		if(dx < 0) {
-			if(topLeft || bottomLeft) {
-				dx = 0;
-				xtemp = currCol * tileSize + cwidth / 2.0;
-			}
-			else {
-				xtemp += dx;
-			}
-		}
-		if(dx > 0) {
-			if(topRight || bottomRight) {
-				dx = 0;
-				xtemp = (currCol + 1) * tileSize - cwidth / 2.0;
-			}
-			else {
-				xtemp += dx;
-			}
-		}
+		cornerCheckY();
+
 		
 		if(!falling) {
 			calculateCorners(x, ydest + 1);

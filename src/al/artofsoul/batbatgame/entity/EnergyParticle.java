@@ -18,10 +18,10 @@ public class EnergyParticle extends MapObject {
 	
 	private BufferedImage[] sprites;
 	
-	public static int UP = 0;
-	public static int LEFT = 1;
-	public static int DOWN = 2;
-	public static int RIGHT = 3;
+	public static int updir = 0;
+	public static int leftdir = 1;
+	public static int downdir = 2;
+	public static int rightdir = 3;
 	
 	public EnergyParticle(TileMap tm, double x, double y, int dir) {
 		super(tm);
@@ -29,15 +29,15 @@ public class EnergyParticle extends MapObject {
 		this.y = y;
 		double d1 = Math.random() * 2.5 - 1.25;
 		double d2 = -Math.random() - 0.8; 
-		if(dir == UP) {
+		if(dir == updir) {
 			dx = d1;
 			dy = d2;
 		}
-		else if(dir == LEFT) {
+		else if(dir == leftdir) {
 			dx = d2;
 			dy = d1;
 		}
-		else if(dir == DOWN) {
+		else if(dir == downdir) {
 			dx = d1;
 			dy = -d2;
 		}
@@ -61,8 +61,6 @@ public class EnergyParticle extends MapObject {
 	
 	public boolean shouldRemove() { return remove; }
 	
-	public void draw(Graphics2D g) {
-		super.draw(g);
-	}
+	//Draw-Methode wird geerbt.
 	
 }

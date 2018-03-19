@@ -338,7 +338,7 @@ public class Player extends MapObject {
 						tileMap,
 						x,
 						y + cheight / 4.0,
-						EnergyParticle.DOWN));
+						EnergyParticle.downdir));
 			}
 		}
 		
@@ -368,7 +368,7 @@ public class Player extends MapObject {
 		// check teleporting
 		if(teleporting) {
 			energyParticles.add(
-				new EnergyParticle(tileMap, x, y, EnergyParticle.UP)
+				new EnergyParticle(tileMap, x, y, EnergyParticle.updir)
 			);
 		}
 		
@@ -420,14 +420,14 @@ public class Player extends MapObject {
 						tileMap,
 						x + 30,
 						y,
-						EnergyParticle.RIGHT));
+						EnergyParticle.rightdir));
 			else
 				energyParticles.add(
 					new EnergyParticle(
 						tileMap,
 						x - 30,
 						y,
-						EnergyParticle.LEFT));
+						EnergyParticle.leftdir));
 		}
 		
 		// check enemy interaction
@@ -505,7 +505,7 @@ public class Player extends MapObject {
 								tileMap,
 								aur.x + aur.width / 2,
 								aur.y + 5,
-								EnergyParticle.UP));
+								EnergyParticle.updir));
 					}
 				}
 			}
@@ -527,14 +527,14 @@ public class Player extends MapObject {
 								tileMap, 
 								ar.x + ar.width - 4, 
 								ar.y + ar.height / 2,
-								EnergyParticle.RIGHT));
+								EnergyParticle.rightdir));
 					else
 						energyParticles.add(
 							new EnergyParticle(
 								tileMap,
 								ar.x + 4,
 								ar.y + ar.height / 2,
-								EnergyParticle.LEFT));	
+								EnergyParticle.leftdir));
 				}}
 			}
 		}

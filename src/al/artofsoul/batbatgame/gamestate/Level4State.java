@@ -427,5 +427,4 @@ public class Level4State extends GameState {
             eventFinish = true;
         }
     }
-
 }

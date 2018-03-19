@@ -39,9 +39,9 @@ public class Enemy extends MapObject {
 		flinching = true;
 		flinchCount = 0;
 	}
-	
-	public void update() {}
-	
+
+	public void update() {//Method empty, still gets invoked in Level4State.java
+	}
 }
 
 
