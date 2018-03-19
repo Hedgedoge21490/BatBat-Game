@@ -57,7 +57,6 @@ public class Level1State extends GameState {
         clouds = new Background("/Backgrounds/rete.gif", 0.1);
         mountains = new Background("/Backgrounds/mali.gif", 0.2);
 
-        // tilemap
         tileMap = new TileMap(30, "/Tilesets/ruinstileset.gif", "/Maps/level1.map",0,120,1);
         tileMap.setBounds(
                 tileMap.getWidth() - 1 * tileMap.getTileSize(),
@@ -65,12 +64,8 @@ public class Level1State extends GameState {
                 0, 0
         );
 
-        // player
-        player = new Player(tileMap);
-        player.setPosition(140, 191);
-        player.setHealth(PlayerSave.getHealth());
-        player.setLives(PlayerSave.getLives());
-        player.setTime(PlayerSave.getTime());
+        player = new Player(tileMap,140,191);
+
 
         // enemies
         enemies = new ArrayList<Enemy>();

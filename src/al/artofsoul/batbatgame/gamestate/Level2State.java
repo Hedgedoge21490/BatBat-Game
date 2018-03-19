@@ -55,17 +55,12 @@ public class Level2State extends GameState {
         perendimi = new Background("/Backgrounds/perendimi.gif", 0.5, 0);
         mountains = new Background("/Backgrounds/mali2.gif", 0.2);
 
-        // tilemap
         tileMap = new TileMap(30, "/Tilesets/ruinstileset.gif", "/Maps/level2.map", 140,0,1);
         tileMap.setBounds(tileMap.getWidth() - 1 * tileMap.getTileSize(),
                 tileMap.getHeight() - 2 * tileMap.getTileSize(), 0, 0);
 
-        // player
-        player = new Player(tileMap);
-        player.setPosition(300, 161);
-        player.setHealth(PlayerSave.getHealth());
-        player.setLives(PlayerSave.getLives());
-        player.setTime(PlayerSave.getTime());
+        player = new Player(tileMap, 300,161);
+
 
         // enemies
         enemies = new ArrayList<Enemy>();

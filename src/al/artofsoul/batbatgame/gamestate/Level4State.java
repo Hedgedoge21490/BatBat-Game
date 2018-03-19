@@ -60,15 +60,9 @@ public class Level4State extends GameState {
         // backgrounds
         temple = new Background("/Backgrounds/temple.gif", 0.5, 0);
 
-        // tilemap
         tileMap = new TileMap(30, "/Tilesets/ruinstileset.gif", "/Maps/level4.map", 140,0,1);
 
-        // player
-        player = new Player(tileMap);
-        player.setPosition(50, 190);
-        player.setHealth(PlayerSave.getHealth());
-        player.setLives(PlayerSave.getLives());
-        player.setTime(PlayerSave.getTime());
+        player = new Player(tileMap, 50, 190);
 
         // explosions
         explosions = new ArrayList<Explosion>();

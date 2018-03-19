@@ -84,7 +84,7 @@ public class Player extends MapObject {
 	public static final int EMOTESURPRISED = 2;
 	private int emote = EMOTENONE;
 	
-	public Player(TileMap tm) {
+	public Player(TileMap tm,int x, int y) {
 		
 		super(tm);
 		
@@ -112,8 +112,18 @@ public class Player extends MapObject {
 		
 		damage = 2;
 		chargeDamage = 1;
-		
+
+		//orientation
 		facingRight = true;
+		setPosition(x,y);
+
+		//stats
+		setHealth(PlayerSave.getHealth());
+		setLives(PlayerSave.getLives());
+		setTime(PlayerSave.getTime());
+
+
+
 		
 		lives = 3;
 		health = maxHealth = 5;
