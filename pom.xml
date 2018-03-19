@@ -32,7 +32,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
-		<mainClass>al.artofsoul.BatBatGame.Main.Game</mainClass>
+		<mainClass>al.artofsoul.batbatgame.main.Game</mainClass>
 	</properties>
 
 	<dependencies>
