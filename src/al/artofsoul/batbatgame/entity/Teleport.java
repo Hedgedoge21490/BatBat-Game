@@ -44,8 +44,6 @@ public class Teleport extends MapObject {
 		animation.update();
 	}
 	
-	public void draw(Graphics2D g) {
-		super.draw(g);
-	}
+	//draw Methode wird auch hier geerbt.
 	
 }
