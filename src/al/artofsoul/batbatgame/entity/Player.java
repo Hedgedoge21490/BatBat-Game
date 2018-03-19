@@ -275,6 +275,10 @@ public class Player extends MapObject {
 
 
 	private void nextPositionMovement(){
+
+		double maxSpeed = this.maxSpeed;
+		if(dashing) maxSpeed *= 1.75;
+
 		// movement
 		if(left) {
 			dx -= moveSpeed;
@@ -306,7 +310,6 @@ public class Player extends MapObject {
 	private void nextPositionJumping(){
 		// jumping
 		if(jumping && !falling) {
-			//sfx.get("jump").play();
 			dy = jumpStart;
 			falling = true;
 			JukeBox.playerJump();
@@ -364,8 +367,6 @@ public class Player extends MapObject {
 
 		nextPositionKnockback();
 
-		double maxSpeed = this.maxSpeed;
-		if(dashing) maxSpeed *= 1.75;
 
 		nextPositionMovement();
 
@@ -386,18 +387,16 @@ public class Player extends MapObject {
 		width = frameWidths[currentAction];
 		height = frameHights[currentAction];
 	}
-	
-	public void update() {
-		
-		time++;
-		
+
+	public void checkTeleporting(){
 		// check teleporting
 		if(teleporting) {
 			energyParticles.add(
-				new EnergyParticle(tileMap, x, y, EnergyParticle.updir)
+					new EnergyParticle(tileMap, x, y, EnergyParticle.updir)
 			);
 		}
-		
+	}
+	public void updatePosition(){
 		// update position
 		boolean isFalling = falling;
 		getNextPosition();
@@ -407,7 +406,8 @@ public class Player extends MapObject {
 			JukeBox.play("playerlands");
 		}
 		if(dx == 0) x = (int)x;
-		
+	}
+	public void checkDoneFlinching(){
 		// check done flinching
 		if(flinching) {
 			flinchCount++;
@@ -415,7 +415,8 @@ public class Player extends MapObject {
 				flinching = false;
 			}
 		}
-		
+	}
+	public void updateEnergyParticles(){
 		// energy particles
 		for(int i = 0; i < energyParticles.size(); i++) {
 			energyParticles.get(i).update();
@@ -424,10 +425,11 @@ public class Player extends MapObject {
 				i--;
 			}
 		}
-		
+	}
+	public void checkAttackFinished(){
 		// check attack finished
 		if(currentAction == ANIMATIONATTACKING ||
-			currentAction == ANIMATIONUPATTACKING) {
+				currentAction == ANIMATIONUPATTACKING) {
 			if(animation.hasPlayedOnce()) {
 				attacking = false;
 				upattacking = false;
@@ -442,25 +444,26 @@ public class Player extends MapObject {
 			else cr.x = (int)x - 35;
 			if(facingRight)
 				energyParticles.add(
-					new EnergyParticle(
-						tileMap,
-						x + 30,
-						y,
-						EnergyParticle.rightdir));
+						new EnergyParticle(
+								tileMap,
+								x + 30,
+								y,
+								EnergyParticle.rightdir));
 			else
 				energyParticles.add(
-					new EnergyParticle(
-						tileMap,
-						x - 30,
-						y,
-						EnergyParticle.leftdir));
+						new EnergyParticle(
+								tileMap,
+								x - 30,
+								y,
+								EnergyParticle.leftdir));
 		}
-		
+	}
+	public void checkEnemyInteraction(){
 		// check enemy interaction
 		for(int i = 0; i < enemies.size(); i++) {
-			
+
 			Enemy e = enemies.get(i);
-			
+
 			// check attack
 			if(currentAction == ANIMATIONATTACKING &&
 					animation.getFrame() == 3 && animation.getCount() == 0) {
@@ -468,7 +471,7 @@ public class Player extends MapObject {
 					e.hit(damage);
 				}
 			}
-			
+
 			// check upward attack
 			if(currentAction == ANIMATIONUPATTACKING &&
 					animation.getFrame() == 3 && animation.getCount() == 0) {
@@ -476,7 +479,7 @@ public class Player extends MapObject {
 					e.hit(damage);
 				}
 			}
-			
+
 			// check charging attack
 			if(currentAction == ANIMATIONCHARGING) {
 				if(animation.getCount() == 0) {
@@ -488,17 +491,29 @@ public class Player extends MapObject {
 					}*/
 				}
 			}
-			
+
 			// collision with enemy
 			if(!e.isDead() && intersects(e) && !charging) {
 				hit(e.getDamage());
 			}
-			
+
 			if(e.isDead()) {
 				JukeBox.play("explode", 2000);
 			}
-			
+
 		}
+	}
+	
+	public void update() {
+		
+		time++;
+		checkTeleporting();
+		updatePosition();
+		checkDoneFlinching();
+		updateEnergyParticles();
+		checkAttackFinished();
+		checkEnemyInteraction();
+
 		
 		// set animation, ordered by priority
 		if(teleporting) {
