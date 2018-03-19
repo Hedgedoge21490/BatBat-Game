@@ -16,7 +16,6 @@ import al.artofsoul.batbatgame.tilemap.TileMap;
 public class MapPiece extends MapObject {
 
     private BufferedImage[] sprites;
-    public String type;
 
     public MapPiece(TileMap tm, String type) {
 
@@ -43,6 +42,10 @@ public class MapPiece extends MapObject {
                 case "TopRichtPiece":
                     sprites[0] = spritesheet.getSubimage(10, 0, 10, 10);
                     break;
+
+                default:
+                    sprites[0] = spritesheet.getSubimage(0, 10, 10, 10);
+                    break;
             }
             animation.setFrames(sprites);
             animation.setDelay(-1);
@@ -57,9 +60,4 @@ public class MapPiece extends MapObject {
         y += dy;
         animation.update();
     }
-
-    public void draw(Graphics2D g) {
-        super.draw(g);
-    }
-
 }

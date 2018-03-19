@@ -11,8 +11,6 @@ import al.artofsoul.batbatgame.tilemap.TileMap;
 
 public class BottomLeftPiece extends MapPiece {
 	
-	private BufferedImage[] sprites;
-	
 	public BottomLeftPiece(TileMap tm) {
 		super(tm, "BottomLEftPiece");
 	}
