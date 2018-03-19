@@ -21,9 +21,9 @@ public class RedEnergy extends Enemy {
 	private boolean permanent;
 	
 	private int type = 0;
-	public static int VECTOR = 0;
-	public static int GRAVITY = 1;
-	public static int BOUNCE = 2;
+	public static int vector = 0;
+	public static int gravity = 1;
+	public static int bounce = 2;
 	
 	private int bounceCount = 0;
 	
@@ -56,27 +56,39 @@ public class RedEnergy extends Enemy {
 	public void setType(int i) { type = i; }
 	public void setPermanent(boolean b) { permanent = b; }
 	
+	public void updateAnimation(){
+		animation.update();
+
+		if(!permanent) {
+			if(x < 0 || x > tileMap.getWidth() || y < 0 || y > tileMap.getHeight()) {
+				remove = true;
+			}
+			if(bounceCount == 3) {
+				remove = true;
+			}
+		}
+	}
+
+	@Override
 	public void update() {
 		
-		if(start) {
-			if(animation.hasPlayedOnce()) {
+		if(start && animation.hasPlayedOnce()) {
 				animation.setFrames(sprites);
 				animation.setNumFrames(3);
 				animation.setDelay(2);
 				start = false;
-			}
 		}
 		
-		if(type == VECTOR) {
+		if(type == vector) {
 			x += dx;
 			y += dy;
 		}
-		else if(type == GRAVITY) {
+		else if(type == gravity) {
 			dy += 0.2;
 			x += dx;
 			y += dy;
 		}
-		else if(type == BOUNCE) {
+		else if(type == bounce) {
 			double dx2 = dx;
 			double dy2 = dy;
 			checkTileMapCollision();
@@ -91,23 +103,11 @@ public class RedEnergy extends Enemy {
 			x += dx;
 			y += dy;
 		}
-		
-		// update animation
-		animation.update();
-		
-		if(!permanent) {
-			if(x < 0 || x > tileMap.getWidth() || y < 0 || y > tileMap.getHeight()) {
-				remove = true;
-			}
-			if(bounceCount == 3) {
-				remove = true;
-			}
-		}
+
+		updateAnimation();
 		
 	}
-	
-	public void draw(Graphics2D g) {
-		super.draw(g);
-	}
-	
+
+	//DrawMethode wird geerbt.
+
 }

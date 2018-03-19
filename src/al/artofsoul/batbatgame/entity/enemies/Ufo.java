@@ -23,7 +23,7 @@ public class Ufo extends Enemy {
 	private BufferedImage[] jumpSprites;
 	private BufferedImage[] attackSprites;
 	
-	private boolean jumping;
+	private boolean isJumping;
 	
 	private static final int IDLE = 0;
 	private static final int JUMPING = 1;
@@ -71,30 +71,20 @@ public class Ufo extends Enemy {
 			dy += fallSpeed;
 			if(dy > maxFallSpeed) dy = maxFallSpeed;
 		}
-		if(jumping && !falling) {
+		if(isJumping && !falling) {
 			dy = jumpStart;
 		}
 	}
-	
-	public void update() {
-		
-		// check if done flinching
+
+
+	public void checkIfDoneFlinching(){
 		if(flinching) {
 			flinchCount++;
 			if(flinchCount == 6) flinching = false;
 		}
-		
-		getNextPosition();
-		checkTileMapCollision();
-		setPosition(xtemp, ytemp);
-		
-		// update animation
-		animation.update();
-		
-		if(player.getx() < x) facingRight = false;
-		else facingRight = true;
-		
-		// idle
+	}
+
+	public void idleUfo(){
 		if(step == 0) {
 			if(currentAction != IDLE) {
 				currentAction = IDLE;
@@ -107,21 +97,26 @@ public class Ufo extends Enemy {
 				attackTick = 0;
 			}
 		}
-		// jump away
+	}
+
+	public void jumpAwayUfo(){
 		if(step == 1) {
 			if(currentAction != JUMPING) {
 				currentAction = JUMPING;
 				animation.setFrames(jumpSprites);
 				animation.setDelay(-1);
 			}
-			jumping = true;
+			isJumping = true;
 			if(facingRight) left = true;
 			else right = true;
 			if(falling) {
 				step++;
 			}
 		}
-		// attack
+	}
+
+	public void attackUfo(){
+
 		if(step == 2) {
 			if(dy > 0 && currentAction != ATTACKING) {
 				currentAction = ATTACKING;
@@ -140,26 +135,45 @@ public class Ufo extends Enemy {
 				animation.setDelay(-1);
 			}
 		}
+	}
+
+	@Override
+	public void update() {
+
+		checkIfDoneFlinching();
+		
+		getNextPosition();
+		checkTileMapCollision();
+		setPosition(xtemp, ytemp);
+		
+		// update animation
+		animation.update();
+		
+		if(player.getx() < x) facingRight = false;
+		else facingRight = true;
+
+		idleUfo();
+		jumpAwayUfo();
+		attackUfo();
+		
 		// done attacking
-		if(step == 3) {
-			if(dy == 0) step++;
+		if(step == 3 && dy == 0) {
+			step++;
 		}
 		// land
 		if(step == 4) {
 			step = 0;
-			left = right = jumping = false;
+			left = right = isJumping = false;
 		}
 		
 	}
-	
+
+	@Override
 	public void draw(Graphics2D g) {
-		
-		if(flinching) {
-			if(flinchCount == 0 || flinchCount == 2) return;
+		if(flinching && (flinchCount == 0 || flinchCount == 2)) {
+			return;
 		}
-		
 		super.draw(g);
-		
 	}
 	
 }
