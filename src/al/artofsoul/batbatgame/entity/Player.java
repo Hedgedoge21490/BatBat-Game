@@ -299,7 +299,7 @@ public class Player extends MapObject {
 					dx = 0;
 				}
 			}
-			else if(dx < 0) {
+			else{
 				dx += stopSpeed;
 				if(dx > 0) {
 					dx = 0;
