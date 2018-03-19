@@ -524,6 +524,26 @@ public class Player extends MapObject {
 		}
 	}
 
+	public void continueAttacking(){
+		if(animation.getFrame() == 4 && animation.getCount() == 0) {
+			for(int c = 0; c < 3; c++) {
+				if(facingRight)
+					energyParticles.add(
+							new EnergyParticle(
+									tileMap,
+									ar.x + ar.width - 4,
+									ar.y + ar.height / 2,
+									EnergyParticle.rightdir));
+				else
+					energyParticles.add(
+							new EnergyParticle(
+									tileMap,
+									ar.x + 4,
+									ar.y + ar.height / 2,
+									EnergyParticle.leftdir));
+			}}
+	}
+
 	public void updateAnimationAttacking(){
 		if(currentAction != ANIMATIONATTACKING) {
 			JukeBox.playerAttack();
@@ -533,41 +553,54 @@ public class Player extends MapObject {
 			else ar.x = (int)x - 40;
 		}
 		else {
-			if(animation.getFrame() == 4 && animation.getCount() == 0) {
-				for(int c = 0; c < 3; c++) {
-					if(facingRight)
-						energyParticles.add(
-								new EnergyParticle(
-										tileMap,
-										ar.x + ar.width - 4,
-										ar.y + ar.height / 2,
-										EnergyParticle.rightdir));
-					else
-						energyParticles.add(
-								new EnergyParticle(
-										tileMap,
-										ar.x + 4,
-										ar.y + ar.height / 2,
-										EnergyParticle.leftdir));
-				}}
+			continueAttacking();
 		}
 	}
-
 	public void updateAnimationTeleporting(){
 		if(currentAction != ANIMATIONTELEPORTING) {
 			setAnimation(ANIMATIONTELEPORTING);
 		}
 	}
-
 	public void updateAnimationKnockback(){
 		if(currentAction != ANIMATIONKNOCKBACK) {
 			setAnimation(ANIMATIONKNOCKBACK);
 		}
 	}
-
 	public void updateAnimationDead(){
 		if(currentAction != ANIMATIONDEAD) {
 			setAnimation(ANIMATIONDEAD);
+		}
+	}
+	public void updateAnimationCharging(){
+		if(currentAction != ANIMATIONCHARGING) {
+			setAnimation(ANIMATIONCHARGING);
+		}
+	}
+	public void updateAnimationJumping(){
+		if(currentAction != ANIMATIONJUMPING) {
+			setAnimation(ANIMATIONJUMPING);
+		}
+	}
+	public void updateAnimationFalling(){
+		if(currentAction != ANIMATIONFALLING) {
+			setAnimation(ANIMATIONFALLING);
+		}
+	}
+	public void updateAnimationDashing(){
+		if(currentAction != ANIMATIONDASHING) {
+			setAnimation(ANIMATIONDASHING);
+		}
+	}
+	public void updateAnimationWalking(){
+		if(currentAction != ANIMATIONWALKING) {
+			setAnimation(ANIMATIONWALKING);
+		}
+	}
+
+	public void setDirection(){
+		if(!attacking && !upattacking && !charging && !knockback) {
+			if(right) facingRight = true;
+			if(left) facingRight = false;
 		}
 	}
 
@@ -599,44 +632,30 @@ public class Player extends MapObject {
 			updateAnimationAttacking();
 		}
 		else if(charging) {
-			if(currentAction != ANIMATIONCHARGING) {
-				setAnimation(ANIMATIONCHARGING);
-			}
+			updateAnimationCharging();
 		}
 		else if(dy < 0) {
-			if(currentAction != ANIMATIONJUMPING) {
-				setAnimation(ANIMATIONJUMPING);
-			}
+			updateAnimationJumping();
 		}
 		else if(dy > 0) {
-			if(currentAction != ANIMATIONFALLING) {
-				setAnimation(ANIMATIONFALLING);
-			}
+			updateAnimationFalling();
 		}
 		else if(dashing && (left || right)) {
-			if(currentAction != ANIMATIONDASHING) {
-				setAnimation(ANIMATIONDASHING);
-			}
+			updateAnimationDashing();
 		}
 		else if(left || right) {
-			if(currentAction != ANIMATIONWALKING) {
-				setAnimation(ANIMATIONWALKING);
-			}
+			updateAnimationWalking();
 		}
 		else if(currentAction != ANIMATIONIDLE) {
 			setAnimation(ANIMATIONIDLE);
 		}
 		
 		animation.update();
-		
-		// set direction
-		if(!attacking && !upattacking && !charging && !knockback) {
-			if(right) facingRight = true;
-			if(left) facingRight = false;
-		}
-		
+
+		setDirection();
 	}
-	
+
+	@Override
 	public void draw(Graphics2D g) {
 		
 		// draw emote
@@ -653,8 +672,8 @@ public class Player extends MapObject {
 		}
 		
 		// flinch
-		if(flinching && !knockback) {
-			if(flinchCount % 10 < 5) return;
+		if(flinching && !knockback && flinchCount % 10 < 5) {
+			return;
 		}
 		
 		super.draw(g);
