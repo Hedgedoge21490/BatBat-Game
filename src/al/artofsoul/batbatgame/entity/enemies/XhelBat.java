@@ -60,7 +60,8 @@ public class XhelBat extends Enemy {
 			dy = jumpStart;
 		}
 	}
-	
+
+	@Override
 	public void update() {
 		
 		if(!active) {
@@ -97,11 +98,12 @@ public class XhelBat extends Enemy {
 		animation.update();
 		
 	}
-	
+
+	@Override
 	public void draw(Graphics2D g) {
 		
-		if(flinching) {
-			if(flinchCount == 0 || flinchCount == 2) return;
+		if(flinching && (flinchCount == 0 || flinchCount == 2)) {
+			return;
 		}
 		
 		super.draw(g);

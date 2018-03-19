@@ -44,7 +44,8 @@ public class Zogu extends Enemy {
 		b = Math.random() * 0.06 + 0.07;
 		
 	}
-	
+
+	@Override
 	public void update() {
 		
 		// check if done flinching
@@ -61,11 +62,12 @@ public class Zogu extends Enemy {
 		animation.update();
 		
 	}
-	
+
+	@Override
 	public void draw(Graphics2D g) {
 		
-		if(flinching) {
-			if(flinchCount == 0 || flinchCount == 2) return;
+		if(flinching && (flinchCount == 0 || flinchCount == 2)) {
+			return;
 		}
 		
 		super.draw(g);

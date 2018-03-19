@@ -155,7 +155,7 @@ public class Ufo extends Enemy {
 		idleUfo();
 		jumpAwayUfo();
 		attackUfo();
-		
+
 		// done attacking
 		if(step == 3 && dy == 0) {
 			step++;
