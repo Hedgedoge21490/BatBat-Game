@@ -10,7 +10,7 @@ install: true
 addons:
   sonarcloud:
     organization: "hedgedoge21490-github"
-    token: $BatBatToken
+    token: $AdventureToken
 
 #script:
 #  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
