@@ -1,6 +1,5 @@
 package al.artofsoul.batbatgame.entity;
 
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import al.artofsoul.batbatgame.handlers.Content;

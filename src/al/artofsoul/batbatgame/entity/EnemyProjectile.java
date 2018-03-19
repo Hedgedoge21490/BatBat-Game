@@ -1,7 +1,5 @@
 package al.artofsoul.batbatgame.entity;
 
-import java.awt.Graphics2D;
-
 import al.artofsoul.batbatgame.tilemap.TileMap;
 
 /**

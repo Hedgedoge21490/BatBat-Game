@@ -46,16 +46,16 @@ public class Player extends MapObject {
 	
 	// animations
 	private ArrayList<BufferedImage[]> sprites;
-	private final int[] NUMFRAMES = {
+	private static final int[] numFrames = {
 		1, 8, 5, 3, 3, 5, 3, 8, 2, 1, 3
 	};
-	private final int[] FRAMEWIDTHS = {
+	private static final int[] frameWidths = {
 		40, 40, 80, 40, 40, 40, 80, 40, 40, 40, 40
 	};
-	private final int[] FRAMEHEIGHTS = {
+	private static final int[] frameHights = {
 		40, 40, 40, 40, 40, 80, 40, 40, 40, 40, 40
 	};
-	private final int[] SPRITEDELAYS = {
+	private static final int[] spriteDelays = {
 		-1, 3, 2, 6, 5, 2, 2, 2, 1, -1, 1
 	};
 	
@@ -64,25 +64,25 @@ public class Player extends MapObject {
 	private Rectangle cr;
 	
 	// animation actions
-	private static final int IDLE = 0;
-	private static final int WALKING = 1;
-	private static final int ATTACKING = 2;
-	private static final int JUMPING = 3;
-	private static final int FALLING = 4;
-	private static final int UPATTACKING = 5;
-	private static final int CHARGING = 6;
-	private static final int DASHING = 7;
-	private static final int KNOCKBACK = 8;
-	private static final int DEAD = 9;
-	private static final int TELEPORTING = 10;
+	private static final int animationIDLE = 0;
+	private static final int animationWALKING = 1;
+	private static final int animationATTACKING = 2;
+	private static final int animationJUMPING = 3;
+	private static final int animationFALLING = 4;
+	private static final int animationUPATTACKING = 5;
+	private static final int animationCHARGING = 6;
+	private static final int animationDASHING = 7;
+	private static final int animationKNOCKBACK = 8;
+	private static final int animationDEAD = 9;
+	private static final int animationTELEPORTING = 10;
 	
 	// emotes
 	private BufferedImage confused;
 	private BufferedImage surprised;
-	public static final int NONE = 0;
-	public static final int CONFUSED = 1;
-	public static final int SURPRISED = 2;
-	private int emote = NONE;
+	public static final int emoteNONE = 0;
+	public static final int emoteCONFUSED = 1;
+	public static final int emoteSURPRISED = 2;
+	private int emote = emoteNONE;
 	
 	public Player(TileMap tm) {
 		
@@ -128,19 +128,19 @@ public class Player extends MapObject {
 			);
 			
 			int count = 0;
-			sprites = new ArrayList<BufferedImage[]>();
-			for(int i = 0; i < NUMFRAMES.length; i++) {
-				BufferedImage[] bi = new BufferedImage[NUMFRAMES[i]];
-				for(int j = 0; j < NUMFRAMES[i]; j++) {
+			sprites = new ArrayList<>();
+			for(int i = 0; i < numFrames.length; i++) {
+				BufferedImage[] bi = new BufferedImage[numFrames[i]];
+				for(int j = 0; j < numFrames[i]; j++) {
 					bi[j] = spritesheet.getSubimage(
-						j * FRAMEWIDTHS[i],
+						j * frameWidths[i],
 						count,
-						FRAMEWIDTHS[i],
-						FRAMEHEIGHTS[i]
+						frameWidths[i],
+						frameHights[i]
 					);
 				}
 				sprites.add(bi);
-				count += FRAMEHEIGHTS[i];
+				count += frameHights[i];
 			}
 			
 			// emotes
@@ -159,13 +159,13 @@ public class Player extends MapObject {
 			e.printStackTrace();
 		}
 		
-		energyParticles = new ArrayList<EnergyParticle>();
+		energyParticles = new ArrayList<>();
 		
-		setAnimation(IDLE);
+		setAnimation(animationIDLE);
 		
-		JukeBox.load("/SFX/playerjump.mp3", "playerjump");
+		JukeBox.playerJump();
 		JukeBox.load("/SFX/playerlands.mp3", "playerlands");
-		JukeBox.load("/SFX/playerattack.mp3", "playerattack");
+		JukeBox.playerAttack();
 		JukeBox.load("/SFX/playerhit.mp3", "playerhit");
 		JukeBox.load("/SFX/playercharge.mp3", "playercharge");
 		
@@ -324,14 +324,14 @@ public class Player extends MapObject {
 			//sfx.get("jump").play();
 			dy = jumpStart;
 			falling = true;
-			JukeBox.play("playerjump");
+			JukeBox.playerJump();
 		}
 		
 		if(doubleJump) {
 			dy = doubleJumpStart;
 			alreadyDoubleJump = true;
 			doubleJump = false;
-			JukeBox.play("playerjump");
+			JukeBox.playerJump();
 			for(int i = 0; i < 6; i++) {
 				energyParticles.add(
 					new EnergyParticle(
@@ -356,9 +356,9 @@ public class Player extends MapObject {
 	private void setAnimation(int i) {
 		currentAction = i;
 		animation.setFrames(sprites.get(currentAction));
-		animation.setDelay(SPRITEDELAYS[currentAction]);
-		width = FRAMEWIDTHS[currentAction];
-		height = FRAMEHEIGHTS[currentAction];
+		animation.setDelay(spriteDelays[currentAction]);
+		width = frameWidths[currentAction];
+		height = frameHights[currentAction];
 	}
 	
 	public void update() {
@@ -400,14 +400,14 @@ public class Player extends MapObject {
 		}
 		
 		// check attack finished
-		if(currentAction == ATTACKING ||
-			currentAction == UPATTACKING) {
+		if(currentAction == animationATTACKING ||
+			currentAction == animationUPATTACKING) {
 			if(animation.hasPlayedOnce()) {
 				attacking = false;
 				upattacking = false;
 			}
 		}
-		if(currentAction == CHARGING) {
+		if(currentAction == animationCHARGING) {
 			if(animation.hasPlayed(5)) {
 				charging = false;
 			}
@@ -436,7 +436,7 @@ public class Player extends MapObject {
 			Enemy e = enemies.get(i);
 			
 			// check attack
-			if(currentAction == ATTACKING &&
+			if(currentAction == animationATTACKING &&
 					animation.getFrame() == 3 && animation.getCount() == 0) {
 				if(e.intersects(ar)) {
 					e.hit(damage);
@@ -444,7 +444,7 @@ public class Player extends MapObject {
 			}
 			
 			// check upward attack
-			if(currentAction == UPATTACKING &&
+			if(currentAction == animationUPATTACKING &&
 					animation.getFrame() == 3 && animation.getCount() == 0) {
 				if(e.intersects(aur)) {
 					e.hit(damage);
@@ -452,7 +452,7 @@ public class Player extends MapObject {
 			}
 			
 			// check charging attack
-			if(currentAction == CHARGING) {
+			if(currentAction == animationCHARGING) {
 				if(animation.getCount() == 0) {
 					if(e.intersects(cr)) {
 						e.hit(chargeDamage);
@@ -476,24 +476,24 @@ public class Player extends MapObject {
 		
 		// set animation, ordered by priority
 		if(teleporting) {
-			if(currentAction != TELEPORTING) {
-				setAnimation(TELEPORTING);
+			if(currentAction != animationTELEPORTING) {
+				setAnimation(animationTELEPORTING);
 			}
 		}
 		else if(knockback) {
-			if(currentAction != KNOCKBACK) {
-				setAnimation(KNOCKBACK);
+			if(currentAction != animationKNOCKBACK) {
+				setAnimation(animationKNOCKBACK);
 			}
 		}
 		else if(health == 0) {
-			if(currentAction != DEAD) {
-				setAnimation(DEAD);
+			if(currentAction != animationDEAD) {
+				setAnimation(animationDEAD);
 			}
 		}
 		else if(upattacking) {
-			if(currentAction != UPATTACKING) {
-				JukeBox.play("playerattack");
-				setAnimation(UPATTACKING);
+			if(currentAction != animationUPATTACKING) {
+				JukeBox.playerAttack();
+				setAnimation(animationUPATTACKING);
 				aur.x = (int)x - 15;
 				aur.y = (int)y - 50;
 			}
@@ -511,9 +511,9 @@ public class Player extends MapObject {
 			}
 		}
 		else if(attacking) {
-			if(currentAction != ATTACKING) {
-				JukeBox.play("playerattack");
-				setAnimation(ATTACKING);
+			if(currentAction != animationATTACKING) {
+				JukeBox.playerAttack();
+				setAnimation(animationATTACKING);
 				ar.y = (int)y - 6;
 				if(facingRight) ar.x = (int)x + 10;
 				else ar.x = (int)x - 40;
@@ -539,32 +539,32 @@ public class Player extends MapObject {
 			}
 		}
 		else if(charging) {
-			if(currentAction != CHARGING) {
-				setAnimation(CHARGING);
+			if(currentAction != animationCHARGING) {
+				setAnimation(animationCHARGING);
 			}
 		}
 		else if(dy < 0) {
-			if(currentAction != JUMPING) {
-				setAnimation(JUMPING);
+			if(currentAction != animationJUMPING) {
+				setAnimation(animationJUMPING);
 			}
 		}
 		else if(dy > 0) {
-			if(currentAction != FALLING) {
-				setAnimation(FALLING);
+			if(currentAction != animationFALLING) {
+				setAnimation(animationFALLING);
 			}
 		}
 		else if(dashing && (left || right)) {
-			if(currentAction != DASHING) {
-				setAnimation(DASHING);
+			if(currentAction != animationDASHING) {
+				setAnimation(animationDASHING);
 			}
 		}
 		else if(left || right) {
-			if(currentAction != WALKING) {
-				setAnimation(WALKING);
+			if(currentAction != animationWALKING) {
+				setAnimation(animationWALKING);
 			}
 		}
-		else if(currentAction != IDLE) {
-			setAnimation(IDLE);
+		else if(currentAction != animationIDLE) {
+			setAnimation(animationIDLE);
 		}
 		
 		animation.update();
@@ -580,10 +580,10 @@ public class Player extends MapObject {
 	public void draw(Graphics2D g) {
 		
 		// draw emote
-		if(emote == CONFUSED) {
+		if(emote == emoteCONFUSED) {
 			g.drawImage(confused, (int)(x + xmap - cwidth / 2.0), (int)(y + ymap - 40), null);
 		}
-		else if(emote == SURPRISED) {
+		else if(emote == emoteSURPRISED) {
 			g.drawImage(surprised, (int)(x + xmap - cwidth / 2.0), (int)(y + ymap - 40), null);
 		}
 		

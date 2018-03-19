@@ -23,6 +23,14 @@ public class JukeBox {
 	{
 
 	}
+
+	public static void playerJump(){
+		JukeBox.load("/SFX/playerjump.mp3", "playerjump");
+	}
+
+	public static void playerAttack(){
+		JukeBox.load("/SFX/playerattack.mp3", "playerattack");
+	}
 	
 	public static void init() {
 		clips = new HashMap<>();

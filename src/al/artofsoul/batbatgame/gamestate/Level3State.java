@@ -397,13 +397,13 @@ public class Level3State extends GameState {
             player.setPosition(2175, player.gety());
         }
         if (eventCount == 60) {
-            player.setEmote(Player.CONFUSED);
+            player.setEmote(Player.emoteCONFUSED);
         }
-        if (eventCount == 120) player.setEmote(Player.NONE);
+        if (eventCount == 120) player.setEmote(Player.emoteNONE);
         if (eventCount == 150) tileMap.setShaking(true, 10);
-        if (eventCount == 180) player.setEmote(Player.SURPRISED);
+        if (eventCount == 180) player.setEmote(Player.emoteSURPRISED);
         if (eventCount == 300) {
-            player.setEmote(Player.NONE);
+            player.setEmote(Player.emoteNONE);
             eventQuake = blockInput = false;
             eventCount = 0;
         }
