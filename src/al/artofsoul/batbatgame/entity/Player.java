@@ -379,7 +379,9 @@ public class Player extends MapObject {
 		nextPOsitionFalling();
 		
 	}
-	
+
+	//Hier beginnt der Teil mit dem Update!
+
 	private void setAnimation(int i) {
 		currentAction = i;
 		animation.setFrames(sprites.get(currentAction));
@@ -488,7 +490,7 @@ public class Player extends MapObject {
 			Enemy e = enemies.get(i);
 
 			checkAttacks(e);
-			
+
 			// collision with enemy
 			if(!e.isDead() && intersects(e) && !charging) {
 				hit(e.getDamage());
@@ -500,7 +502,75 @@ public class Player extends MapObject {
 
 		}
 	}
-	
+
+	public void updateAnimationUpattacking(){
+		if(currentAction != ANIMATIONUPATTACKING) {
+			JukeBox.playerAttack();
+			setAnimation(ANIMATIONUPATTACKING);
+			aur.x = (int)x - 15;
+			aur.y = (int)y - 50;
+		}
+		else {
+			if(animation.getFrame() == 4 && animation.getCount() == 0) {
+				for(int c = 0; c < 3; c++) {
+					energyParticles.add(
+							new EnergyParticle(
+									tileMap,
+									aur.x + aur.width / 2,
+									aur.y + 5,
+									EnergyParticle.updir));
+				}
+			}
+		}
+	}
+
+	public void updateAnimationAttacking(){
+		if(currentAction != ANIMATIONATTACKING) {
+			JukeBox.playerAttack();
+			setAnimation(ANIMATIONATTACKING);
+			ar.y = (int)y - 6;
+			if(facingRight) ar.x = (int)x + 10;
+			else ar.x = (int)x - 40;
+		}
+		else {
+			if(animation.getFrame() == 4 && animation.getCount() == 0) {
+				for(int c = 0; c < 3; c++) {
+					if(facingRight)
+						energyParticles.add(
+								new EnergyParticle(
+										tileMap,
+										ar.x + ar.width - 4,
+										ar.y + ar.height / 2,
+										EnergyParticle.rightdir));
+					else
+						energyParticles.add(
+								new EnergyParticle(
+										tileMap,
+										ar.x + 4,
+										ar.y + ar.height / 2,
+										EnergyParticle.leftdir));
+				}}
+		}
+	}
+
+	public void updateAnimationTeleporting(){
+		if(currentAction != ANIMATIONTELEPORTING) {
+			setAnimation(ANIMATIONTELEPORTING);
+		}
+	}
+
+	public void updateAnimationKnockback(){
+		if(currentAction != ANIMATIONKNOCKBACK) {
+			setAnimation(ANIMATIONKNOCKBACK);
+		}
+	}
+
+	public void updateAnimationDead(){
+		if(currentAction != ANIMATIONDEAD) {
+			setAnimation(ANIMATIONDEAD);
+		}
+	}
+
 	public void update() {
 		
 		time++;
@@ -514,67 +584,19 @@ public class Player extends MapObject {
 		
 		// set animation, ordered by priority
 		if(teleporting) {
-			if(currentAction != ANIMATIONTELEPORTING) {
-				setAnimation(ANIMATIONTELEPORTING);
-			}
+			updateAnimationTeleporting();
 		}
 		else if(knockback) {
-			if(currentAction != ANIMATIONKNOCKBACK) {
-				setAnimation(ANIMATIONKNOCKBACK);
-			}
+			updateAnimationKnockback();
 		}
 		else if(health == 0) {
-			if(currentAction != ANIMATIONDEAD) {
-				setAnimation(ANIMATIONDEAD);
-			}
+			updateAnimationDead();
 		}
 		else if(upattacking) {
-			if(currentAction != ANIMATIONUPATTACKING) {
-				JukeBox.playerAttack();
-				setAnimation(ANIMATIONUPATTACKING);
-				aur.x = (int)x - 15;
-				aur.y = (int)y - 50;
-			}
-			else {
-				if(animation.getFrame() == 4 && animation.getCount() == 0) {
-					for(int c = 0; c < 3; c++) {
-						energyParticles.add(
-							new EnergyParticle(
-								tileMap,
-								aur.x + aur.width / 2,
-								aur.y + 5,
-								EnergyParticle.updir));
-					}
-				}
-			}
+			updateAnimationUpattacking();
 		}
 		else if(attacking) {
-			if(currentAction != ANIMATIONATTACKING) {
-				JukeBox.playerAttack();
-				setAnimation(ANIMATIONATTACKING);
-				ar.y = (int)y - 6;
-				if(facingRight) ar.x = (int)x + 10;
-				else ar.x = (int)x - 40;
-			}
-			else {
-				if(animation.getFrame() == 4 && animation.getCount() == 0) {
-				for(int c = 0; c < 3; c++) {
-					if(facingRight)
-						energyParticles.add(
-							new EnergyParticle(
-								tileMap, 
-								ar.x + ar.width - 4, 
-								ar.y + ar.height / 2,
-								EnergyParticle.rightdir));
-					else
-						energyParticles.add(
-							new EnergyParticle(
-								tileMap,
-								ar.x + 4,
-								ar.y + ar.height / 2,
-								EnergyParticle.leftdir));
-				}}
-			}
+			updateAnimationAttacking();
 		}
 		else if(charging) {
 			if(currentAction != ANIMATIONCHARGING) {
