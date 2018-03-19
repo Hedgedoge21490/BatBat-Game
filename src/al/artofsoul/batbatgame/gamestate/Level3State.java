@@ -56,11 +56,7 @@ public class Level3State extends GameState {
         temple = new Background("/Backgrounds/temple.gif", 0.5, 0);
 
         // tilemap
-        tileMap = new TileMap(30);
-        tileMap.loadTiles("/Tilesets/ruinstileset.gif");
-        tileMap.loadMap("/Maps/level3.map");
-        tileMap.setPosition(140, 0);
-        tileMap.setTween(1);
+        tileMap = new TileMap(30, "/Tilesets/ruinstileset.gif","/Maps/level3.map", 140, 0 ,1);
 
         // player
         player = new Player(tileMap);

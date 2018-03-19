@@ -34,7 +34,7 @@ public class AcidState extends GameState {
 		catch(Exception e) {}
 	}
 	
-	public void init() {}
+	public void init() {/*Leer weil vermutlich nicht benötigt. Aber muss da sein wegen abstract class undso.*/}
 	
 	public void update() {
 		handleInput();

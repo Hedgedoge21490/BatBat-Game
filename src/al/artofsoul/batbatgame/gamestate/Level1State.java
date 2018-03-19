@@ -58,16 +58,12 @@ public class Level1State extends GameState {
         mountains = new Background("/Backgrounds/mali.gif", 0.2);
 
         // tilemap
-        tileMap = new TileMap(30);
-        tileMap.loadTiles("/Tilesets/ruinstileset.gif");
-        tileMap.loadMap("/Maps/level1.map");
-        tileMap.setPosition(0, 120);
+        tileMap = new TileMap(30, "/Tilesets/ruinstileset.gif", "/Maps/level1.map",0,120,1);
         tileMap.setBounds(
                 tileMap.getWidth() - 1 * tileMap.getTileSize(),
                 tileMap.getHeight() - 2 * tileMap.getTileSize(),
                 0, 0
         );
-        tileMap.setTween(1);
 
         // player
         player = new Player(tileMap);

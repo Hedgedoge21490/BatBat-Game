@@ -47,7 +47,7 @@ public class XhelBat extends Enemy {
 		facingRight = false;
 		
 	}
-	
+
 	private void getNextPosition() {
 		if(left) dx = -moveSpeed;
 		else if(right) dx = moveSpeed;
@@ -101,13 +101,12 @@ public class XhelBat extends Enemy {
 
 	@Override
 	public void draw(Graphics2D g) {
-		
-		if(flinching && (flinchCount == 0 || flinchCount == 2)) {
+
+		if (flinching && (flinchCount == 0 || flinchCount == 2)) {
 			return;
 		}
-		
+
 		super.draw(g);
-		
+
 	}
-	
 }

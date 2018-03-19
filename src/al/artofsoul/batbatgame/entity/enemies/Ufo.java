@@ -62,7 +62,8 @@ public class Ufo extends Enemy {
 		attackTick = 0;
 		
 	}
-	
+
+
 	private void getNextPosition() {
 		if(left) dx = -moveSpeed;
 		else if(right) dx = moveSpeed;
@@ -75,6 +76,7 @@ public class Ufo extends Enemy {
 			dy = jumpStart;
 		}
 	}
+
 
 
 	public void checkIfDoneFlinching(){
@@ -168,6 +170,7 @@ public class Ufo extends Enemy {
 		
 	}
 
+
 	@Override
 	public void draw(Graphics2D g) {
 		if(flinching && (flinchCount == 0 || flinchCount == 2)) {
@@ -175,5 +178,5 @@ public class Ufo extends Enemy {
 		}
 		super.draw(g);
 	}
-	
+
 }
