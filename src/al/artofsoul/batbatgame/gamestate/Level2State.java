@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 public class Level2State extends GameState {
 
+    protected String lvl1 = "level1";
+
     public Level2State(GameStateManager gsm) {
         super(gsm, 2);
         init();
@@ -35,8 +37,8 @@ public class Level2State extends GameState {
         eventStart();
 
         //music
-        JukeBox.load("/Music/level1.mp3", "level1");
-        JukeBox.loop("level1", 600, JukeBox.getFrames("level1") - 2200);
+        JukeBox.load("/Music/level1.mp3", lvl1);
+        JukeBox.loop(lvl1, 600, JukeBox.getFrames(lvl1) - 2200);
 
     }
 

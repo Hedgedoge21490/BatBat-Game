@@ -19,6 +19,8 @@ public class Level3State extends GameState {
     // events
     private boolean eventQuake;
 
+    protected String lvl2 = "level2";
+
     public Level3State(GameStateManager gsm) {
         super(gsm, 3);
         init();
@@ -35,8 +37,8 @@ public class Level3State extends GameState {
         eventStart();
 
         // music
-        JukeBox.load("/Music/level1v2.mp3", "level2");
-        JukeBox.loop("level2", 600, JukeBox.getFrames("level2") - 2200);
+        JukeBox.load("/Music/level1v2.mp3", lvl2);
+        JukeBox.loop(lvl2, 600, JukeBox.getFrames(lvl2) - 2200);
 
     }
 

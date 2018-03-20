@@ -22,17 +22,17 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	public static final int SCALE = 2;
 	
 	// game thread
-	private Thread thread;
+	private transient Thread thread;
 	private boolean running;
 	private int FPS = 60;
 	private long targetTime = 1000 / FPS;
 	
 	// image
-	private BufferedImage image;
-	private Graphics2D g;
+	private transient BufferedImage image;
+	private transient Graphics2D g;
 	
 	// game state manager
-	private GameStateManager gsm;
+	private transient GameStateManager gsm;
 	
 	// other
 	private boolean recording = false;
@@ -131,7 +131,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		catch(Exception e) {}
 	}
 	
-	public void keyTyped(KeyEvent key) {}
+	public void keyTyped(KeyEvent key) {/*Wird nicht benutzt aber Interface undso.*/}
+
 	public void keyPressed(KeyEvent key) {
 		if(key.isControlDown()) {
 			if(key.getKeyCode() == KeyEvent.VK_R) {

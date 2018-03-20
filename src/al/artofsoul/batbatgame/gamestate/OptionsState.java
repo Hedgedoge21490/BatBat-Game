@@ -15,6 +15,8 @@ import java.awt.image.BufferedImage;
 
 public class OptionsState extends GameState {
 
+    private String mopt = "menuoption";
+
     final ImageIcon howTo = new ImageIcon(getClass().getResource("/Backgrounds/howTo.gif"));
     private BufferedImage bg;
     private BufferedImage head;
@@ -44,7 +46,7 @@ public class OptionsState extends GameState {
             font2 = new Font("Arial", Font.PLAIN, 9);
 
             // load sound fx
-            JukeBox.load("/SFX/menuoption.mp3", "menuoption");
+            JukeBox.load("/SFX/menuoption.mp3", mopt);
             JukeBox.load("/SFX/menuselect.mp3", "menuselect");
 
         } catch (Exception e) {
@@ -106,11 +108,11 @@ public class OptionsState extends GameState {
         if (Keys.isPressed(Keys.ENTER))
             select();
         if (Keys.isPressed(Keys.UP) && currentChoice > 0) {
-                JukeBox.play("menuoption", 0);
+                JukeBox.play(mopt, 0);
                 currentChoice--;
         }
         if (Keys.isPressed(Keys.DOWN) && currentChoice < options.length - 1) {
-                JukeBox.play("menuoption", 0);
+                JukeBox.play(mopt, 0);
                 currentChoice++;
         }
     }

@@ -21,9 +21,11 @@ public abstract class GameState {
 	
 	protected GameStateManager gsm;
 
+	protected String tileType = "/Tilesets/ruinstileset.gif";
+	protected String tp = "teleport";
+
 	//For Levelstates
 	protected int level;
-
 
 	//All Backgrounds
 	protected Background sky;
@@ -98,7 +100,7 @@ public abstract class GameState {
 
 		switch(level){
 			case 1:
-				tileMap = new TileMap(30, "/Tilesets/ruinstileset.gif", "/Maps/level1.map",0,120,1);
+				tileMap = new TileMap(30, tileType, "/Maps/level1.map",0,120,1);
 				tileMap.setBounds(
 						tileMap.getWidth() - 1 * tileMap.getTileSize(),
 						tileMap.getHeight() - 2 * tileMap.getTileSize(),
@@ -109,7 +111,7 @@ public abstract class GameState {
 				teleport.setPosition(3700, 131);
 				break;
 			case 2:
-				tileMap = new TileMap(30, "/Tilesets/ruinstileset.gif", "/Maps/level2.map", 140,0,1);
+				tileMap = new TileMap(30, tileType, "/Maps/level2.map", 140,0,1);
 				tileMap.setBounds(tileMap.getWidth() - 1 * tileMap.getTileSize(),
 						tileMap.getHeight() - 2 * tileMap.getTileSize(), 0, 0);
 				player = new Player(tileMap, 300,161);
@@ -117,13 +119,13 @@ public abstract class GameState {
 				teleport.setPosition(3700, 131);
 				break;
 			case 3:
-				tileMap = new TileMap(30, "/Tilesets/ruinstileset.gif","/Maps/level3.map", 140, 0 ,1);
+				tileMap = new TileMap(30, tileType,"/Maps/level3.map", 140, 0 ,1);
 				player = new Player(tileMap, 300, 131);
 				teleport = new Teleport(tileMap);
 				teleport.setPosition(2850, 371);
 				break;
 			case 4:
-				tileMap = new TileMap(30, "/Tilesets/ruinstileset.gif", "/Maps/level4.map", 140,0,1);
+				tileMap = new TileMap(30, tileType, "/Maps/level4.map", 140,0,1);
 				player = new Player(tileMap, 50, 190);
 
 				// portal
@@ -169,7 +171,7 @@ public abstract class GameState {
 		}
 
 		//Load Specialeffect Sounds
-		JukeBox.load("/SFX/teleport.mp3", "teleport");
+		JukeBox.load("/SFX/teleport.mp3", tp);
 		JukeBox.load("/SFX/explode.mp3", "explode");
 		JukeBox.load("/SFX/enemyhit.mp3", "enemyhit");
 	}
@@ -298,7 +300,7 @@ public abstract class GameState {
 	public void eventFinish(){
 		eventCount++;
 		if (eventCount == 1) {
-			JukeBox.play("teleport");
+			JukeBox.play(tp);
 			player.setTeleporting(true);
 			player.stop();
 		} else if (eventCount == 120) {
@@ -310,7 +312,7 @@ public abstract class GameState {
 			tb.get(0).y -= 4;
 			tb.get(0).width += 12;
 			tb.get(0).height += 8;
-			JukeBox.stop("teleport");
+			JukeBox.stop(tp);
 		}
 		if (eventCount == 180) {
 			PlayerSave.setHealth(player.getHealth());

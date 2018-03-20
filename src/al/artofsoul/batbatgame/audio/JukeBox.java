@@ -18,6 +18,8 @@ public class JukeBox {
 	private static int gap;
 	private static boolean mute = false;
 
+
+
 	private JukeBox ()
 	{
 		//Empty Constructor to hide implicit private one.
@@ -30,6 +32,8 @@ public class JukeBox {
 	public static void playerAttack(){
 		JukeBox.load("/SFX/playerattack.mp3", "playerattack");
 	}
+
+
 	
 	public static void init() {
 		clips = new HashMap<>();

@@ -16,8 +16,7 @@ import java.util.ArrayList;
 
 public class Level1State extends GameState {
 
-    // events
-    private int eventCount = 0;
+    protected String lvl1 = "level1";
 
     //Wird später im gsm durch überladenen Kostruktor ersetzt
     public Level1State(GameStateManager gsm) {
@@ -39,8 +38,8 @@ public class Level1State extends GameState {
         eventStart();
 
         // music
-        JukeBox.load("/Music/level1.mp3", "level1");
-        JukeBox.loop("level1", 600, JukeBox.getFrames("level1") - 2200);
+        JukeBox.load("/Music/level1.mp3", lvl1);
+        JukeBox.loop(lvl1, 600, JukeBox.getFrames(lvl1) - 2200);
     }
 
     private void populateEnemies() {

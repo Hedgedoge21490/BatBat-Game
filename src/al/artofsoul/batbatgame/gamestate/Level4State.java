@@ -20,6 +20,8 @@ import java.util.ArrayList;
 
 public class Level4State extends GameState {
 
+    private String lvlboss = "level1boss";
+
     private TopLeftPiece tlp;
     private TopRightPiece trp;
     private BottomLeftPiece blp;
@@ -58,7 +60,7 @@ public class Level4State extends GameState {
         eventStart();
 
         // music
-        JukeBox.load("/Music/level1boss.mp3", "level1boss");
+        JukeBox.load("/Music/level1boss.mp3", lvlboss);
     }
 
     private void populateEnemies() {
@@ -242,10 +244,10 @@ public class Level4State extends GameState {
         if (eventCount == 362) {
             flash = false;
             JukeBox.loop(
-                    "level1boss",
+                    lvlboss,
                     0,
                     60000,
-                    JukeBox.getFrames("level1boss") - 4000
+                    JukeBox.getFrames(lvlboss) - 4000
             );
         }
         if (eventCount == 420) {
@@ -260,7 +262,7 @@ public class Level4State extends GameState {
         eventCount++;
         if (eventCount == 1) {
             player.stop();
-            JukeBox.stop("level1boss");
+            JukeBox.stop(lvlboss);
             enemies.clear();
         }
         if (eventCount <= 120 && eventCount % 15 == 0) {
