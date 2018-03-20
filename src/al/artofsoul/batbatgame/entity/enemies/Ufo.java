@@ -22,9 +22,7 @@ public class Ufo extends Enemy {
 	private BufferedImage[] idleSprites;
 	private BufferedImage[] jumpSprites;
 	private BufferedImage[] attackSprites;
-	
-	private boolean isJumping;
-	
+
 	private static final int IDLE = 0;
 	private static final int JUMPING = 1;
 	private static final int ATTACKING = 2;
@@ -64,21 +62,6 @@ public class Ufo extends Enemy {
 	}
 
 
-	private void getNextPosition() {
-		if(left) dx = -moveSpeed;
-		else if(right) dx = moveSpeed;
-		else dx = 0;
-		if(falling) {
-			dy += fallSpeed;
-			if(dy > maxFallSpeed) dy = maxFallSpeed;
-		}
-		if(isJumping && !falling) {
-			dy = jumpStart;
-		}
-	}
-
-
-
 	public void checkIfDoneFlinching(){
 		if(flinching) {
 			flinchCount++;
@@ -108,7 +91,7 @@ public class Ufo extends Enemy {
 				animation.setFrames(jumpSprites);
 				animation.setDelay(-1);
 			}
-			isJumping = true;
+			jumping = true;
 			if(facingRight) left = true;
 			else right = true;
 			if(falling) {
@@ -165,18 +148,10 @@ public class Ufo extends Enemy {
 		// land
 		if(step == 4) {
 			step = 0;
-			left = right = isJumping = false;
+			left = right = jumping = false;
 		}
 		
 	}
 
-
-	@Override
-	public void draw(Graphics2D g) {
-		if(flinching && (flinchCount == 0 || flinchCount == 2)) {
-			return;
-		}
-		super.draw(g);
-	}
 
 }

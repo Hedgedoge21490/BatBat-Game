@@ -48,19 +48,6 @@ public class XhelBat extends Enemy {
 		
 	}
 
-	private void getNextPosition() {
-		if(left) dx = -moveSpeed;
-		else if(right) dx = moveSpeed;
-		else dx = 0;
-		if(falling) {
-			dy += fallSpeed;
-			if(dy > maxFallSpeed) dy = maxFallSpeed;
-		}
-		if(jumping && !falling) {
-			dy = jumpStart;
-		}
-	}
-
 	@Override
 	public void update() {
 		
@@ -99,14 +86,4 @@ public class XhelBat extends Enemy {
 		
 	}
 
-	@Override
-	public void draw(Graphics2D g) {
-
-		if (flinching && (flinchCount == 0 || flinchCount == 2)) {
-			return;
-		}
-
-		super.draw(g);
-
-	}
 }

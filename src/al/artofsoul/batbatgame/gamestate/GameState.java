@@ -246,20 +246,11 @@ public abstract class GameState {
 		// update player
 		player.update();
 
-
 		if(teleport != null){
 			// update teleport
 			teleport.update();
 		}
-
-
-
-
-
-
 	};
-
-
 
 	public abstract void draw(Graphics2D g);
 
@@ -343,13 +334,6 @@ public abstract class GameState {
 					break;
 
 			}
-
 		}
-
-
-
-
 	}
-
-
 }

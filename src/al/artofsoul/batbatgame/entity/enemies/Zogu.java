@@ -63,15 +63,4 @@ public class Zogu extends Enemy {
 		
 	}
 
-	@Override
-	public void draw(Graphics2D g) {
-		
-		if(flinching && (flinchCount == 0 || flinchCount == 2)) {
-			return;
-		}
-		
-		super.draw(g);
-		
-	}
-	
 }

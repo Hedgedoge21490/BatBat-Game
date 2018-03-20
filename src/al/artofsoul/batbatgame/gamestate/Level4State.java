@@ -28,7 +28,6 @@ public class Level4State extends GameState {
     private Spirit spirit;
 
     // events
-    private boolean eventDead;
     private boolean flash;
     private boolean eventBossDead;
 
