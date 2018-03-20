@@ -1,6 +1,5 @@
 package al.artofsoul.batbatgame.entity.enemies;
 
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import al.artofsoul.batbatgame.entity.Enemy;
@@ -23,9 +22,9 @@ public class RedEnergy extends Enemy {
 	private boolean permanent;
 	
 	private int type = 0;
-	public static final int vector = 0;
-	public static final int gravity = 1;
-	public static final int bounce = 2;
+	public static final int VECTOR = 0;
+	public static final int GRAVITY = 1;
+	public static final int BOUNCE = 2;
 	
 	private int bounceCount = 0;
 	
@@ -81,16 +80,16 @@ public class RedEnergy extends Enemy {
 				start = false;
 		}
 		
-		if(type == vector) {
+		if(type == VECTOR) {
 			x += dx;
 			y += dy;
 		}
-		else if(type == gravity) {
+		else if(type == GRAVITY) {
 			dy += 0.2;
 			x += dx;
 			y += dy;
 		}
-		else if(type == bounce) {
+		else if(type == BOUNCE) {
 			double dx2 = dx;
 			double dy2 = dy;
 			checkTileMapCollision();

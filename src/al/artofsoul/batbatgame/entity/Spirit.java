@@ -127,7 +127,7 @@ public class Spirit extends Enemy {
 				RedEnergy de = new RedEnergy(tileMap);
 				de.setPosition(x, y);
 				de.setVector(3 * Math.sin(stepCount / 32.0), 3 * Math.cos(stepCount / 32.0));
-				de.setType(RedEnergy.bounce);
+				de.setType(RedEnergy.BOUNCE);
 				enemies.add(de);
 			}
 			return;
@@ -154,7 +154,7 @@ public class Spirit extends Enemy {
 		}
 		if(stepCount % 60 == 0) {
 			RedEnergy de = new RedEnergy(tileMap);
-			de.setType(RedEnergy.gravity);
+			de.setType(RedEnergy.GRAVITY);
 			de.setPosition(x, y);
 			int dir = Math.random() < 0.5 ? 1 : -1;
 			de.setVector(dir, 0);
