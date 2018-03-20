@@ -12,6 +12,8 @@ import javax.imageio.ImageIO;
 // spritesheets are taken from here.
 
 public class Content {
+
+	private Content (){/* Private Constructor to hide implicit public one.*/}
 	
 	public static BufferedImage[][] EnergyParticle = load("/Sprites/Player/EnergyParticle.gif", 5, 5);
 	public static BufferedImage[][] Explosion = load("/Sprites/Enemies/ExplosionRed.gif", 30, 30);
@@ -40,7 +42,7 @@ public class Content {
 			System.out.println("Error loading graphics.");
 			System.exit(0);
 		}
-		return null;
+		return new BufferedImage[0][0];
 	}
 	
 }

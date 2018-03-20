@@ -59,8 +59,6 @@ public class Level4State extends GameState {
 
         // music
         JukeBox.load("/Music/level1boss.mp3", "level1boss");
-        //JukeBox.load("/Music/fanfare.mp3", "fanfare");
-
     }
 
     private void populateEnemies() {
@@ -70,6 +68,7 @@ public class Level4State extends GameState {
         enemies.add(spirit);
     }
 
+    @Override
     public void update() {
         super.update();
 
@@ -198,36 +197,10 @@ public class Level4State extends GameState {
         }
     }
 
-    // finished level
-    /*
-    private void eventFinish() {
-        eventCount++;
-        if (eventCount == 1) {
-            tb.clear();
-            tb.add(new Rectangle(
-                    GamePanel.WIDTH / 2, GamePanel.HEIGHT / 2, 0, 0));
-        } else if (eventCount > 1) {
-            tb.get(0).x -= 6;
-            tb.get(0).y -= 4;
-            tb.get(0).width += 12;
-            tb.get(0).height += 8;
-        }
-        if (eventCount == 60) {
-            PlayerSave.setHealth(player.getHealth());
-            PlayerSave.setLives(player.getLives());
-            PlayerSave.setTime(player.getTime());
-            gsm.setState(GameStateManager.ACIDSTATE);
-        }
-
-    }
-    */
-
     private void eventPortal() {
         eventCount++;
-        if (eventCount == 1) {
-            if (portal.isOpened()) {
+        if (eventCount == 1 && portal.isOpened()) {
                 eventCount = 360;
-            }
         }
         if (eventCount > 60 && eventCount < 180) {
             energyParticles.add(

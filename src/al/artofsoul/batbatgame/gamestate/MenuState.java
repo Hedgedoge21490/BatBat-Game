@@ -44,8 +44,9 @@ public class MenuState extends GameState {
 		}
 	}
 
-	public void init() {}
+	public void init() {/*Hier wird ja kein Getiers Initiiert*/}
 
+	@Override
 	public void update() {
 		// check keys
 		handleInput();
@@ -85,23 +86,21 @@ public class MenuState extends GameState {
 		case 2:
 			System.exit(0);
 			break;
+		default:
+			break;
 		}
 	}
 
 	public void handleInput() {
 		if (Keys.isPressed(Keys.ENTER))
 			select();
-		if (Keys.isPressed(Keys.UP)) {
-			if (currentChoice > 0) {
+		if (Keys.isPressed(Keys.UP) && currentChoice > 0) {
 				JukeBox.play("menuoption", 0);
 				currentChoice--;
-			}
 		}
-		if (Keys.isPressed(Keys.DOWN)) {
-			if (currentChoice < options.length - 1) {
+		if (Keys.isPressed(Keys.DOWN) && currentChoice < options.length -1) {
 				JukeBox.play("menuoption", 0);
 				currentChoice++;
-			}
 		}
 	}
 }

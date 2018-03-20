@@ -25,8 +25,9 @@ public class PauseState extends GameState {
 		
 	}
 	
-	public void init() {}
-	
+	public void init() {/*Hier wird ja mal gar nichts initiiert.*/}
+
+	@Override
 	public void update() {
 		handleInput();
 	}

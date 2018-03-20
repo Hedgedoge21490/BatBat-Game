@@ -16,11 +16,6 @@ import java.util.ArrayList;
  */
 
 public class Level3State extends GameState {
-
-
-    private Title title;
-    private Title subtitle;
-
     // events
     private boolean eventQuake;
 
@@ -104,6 +99,7 @@ public class Level3State extends GameState {
 
     }
 
+    @Override
     public void update() {
         super.update();
 

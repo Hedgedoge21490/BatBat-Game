@@ -58,9 +58,6 @@ public abstract class GameState {
 	protected Title subtitle;
 	protected Teleport teleport;
 
-	//Level 3 specific
-
-
 	//Level 4 specific
 	protected Portal portal;
 	protected boolean eventPortal;
@@ -73,7 +70,6 @@ public abstract class GameState {
 	protected boolean eventFinish;
 	protected boolean eventDead;
 
-	
 	public GameState(GameStateManager gsm) {
 		this.gsm = gsm;
 	}
@@ -250,7 +246,7 @@ public abstract class GameState {
 		tileMap.fixBounds();
 
 		updateEnemyStuff();
-		
+
 		// update player
 		player.update();
 

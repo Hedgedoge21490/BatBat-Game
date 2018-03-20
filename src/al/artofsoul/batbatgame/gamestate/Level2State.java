@@ -17,10 +17,6 @@ import java.util.ArrayList;
 
 public class Level2State extends GameState {
 
-
-    private Title title;
-    private Title subtitle;
-
     public Level2State(GameStateManager gsm) {
         super(gsm, 2);
         init();
@@ -46,12 +42,6 @@ public class Level2State extends GameState {
 
     private void populateEnemies() {
         enemies.clear();
-        /*
-		 * Ufo t = new Ufo(tileMap, player, enemies); t.setPosition(1300, 100);
-		 * enemies.add(t); t = new Ufo(tileMap, player, enemies);
-		 * t.setPosition(1330, 100); enemies.add(t); t = new Ufo(tileMap,
-		 * player, enemies); t.setPosition(1360, 100); enemies.add(t);
-		 */
 
         XhelBat gp;
         Zogu g;
@@ -95,6 +85,7 @@ public class Level2State extends GameState {
         enemies.add(g);
     }
 
+    @Override
     public void update() {
         super.update();
 
@@ -105,9 +96,6 @@ public class Level2State extends GameState {
         // move backgrounds
         perendimi.setPosition(tileMap.getx(), tileMap.gety());
         mountains.setPosition(tileMap.getx(), tileMap.gety());
-
-
-
     }
 
     public void draw(Graphics2D g) {
@@ -223,6 +211,4 @@ public class Level2State extends GameState {
             }
         }
     }
-
-
 }

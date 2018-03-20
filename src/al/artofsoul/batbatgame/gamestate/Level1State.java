@@ -6,10 +6,8 @@ import al.artofsoul.batbatgame.entity.enemies.XhelBat;
 import al.artofsoul.batbatgame.entity.enemies.Zogu;
 import al.artofsoul.batbatgame.handlers.Keys;
 import al.artofsoul.batbatgame.main.GamePanel;
-import al.artofsoul.batbatgame.tilemap.TileMap;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
@@ -18,14 +16,8 @@ import java.util.ArrayList;
 
 public class Level1State extends GameState {
 
-
-    private Title title;
-    private Title subtitle;
-
     // events
-    private boolean blockInput = false;
     private int eventCount = 0;
-    private boolean eventDead;
 
     //Wird später im gsm durch überladenen Kostruktor ersetzt
     public Level1State(GameStateManager gsm) {
@@ -53,15 +45,6 @@ public class Level1State extends GameState {
 
     private void populateEnemies() {
         enemies.clear();
-        /*Ufo t = new Ufo(tileMap, player, enemies);
-		t.setPosition(1300, 100);
-		enemies.add(t);
-		t = new Ufo(tileMap, player, enemies);
-		t.setPosition(1330, 100);
-		enemies.add(t);
-		t = new Ufo(tileMap, player, enemies);
-		t.setPosition(1360, 100);
-		enemies.add(t);*/
         XhelBat gp;
         Zogu g;
 
