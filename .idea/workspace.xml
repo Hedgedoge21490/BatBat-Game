@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1173b7e1-439d-4034-87f9-8748efa0e635" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/EnergyParticle.java" afterPath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/EnergyParticle.java" />
-      <change beforePath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/MapObject.java" afterPath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/MapObject.java" />
-      <change beforePath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/Player.java" afterPath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/Player.java" />
-      <change beforePath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/Spirit.java" afterPath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/Spirit.java" />
-      <change beforePath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/enemies/RedEnergy.java" afterPath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/enemies/RedEnergy.java" />
+      <change beforePath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/GameState.java" afterPath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/GameState.java" />
+      <change beforePath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level1State.java" afterPath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level1State.java" />
+      <change beforePath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level2State.java" afterPath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level2State.java" />
+      <change beforePath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level3State.java" afterPath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level3State.java" />
+      <change beforePath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level4State.java" afterPath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level4State.java" />
+      <change beforePath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/MenuState.java" afterPath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/MenuState.java" />
+      <change beforePath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/OptionsState.java" afterPath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/OptionsState.java" />
+      <change beforePath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/PauseState.java" afterPath="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/PauseState.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,38 +23,111 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Title.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/Title.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RedEnergy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/enemies/RedEnergy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EnergyParticle.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/EnergyParticle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.45504925">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="Level1State.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level1State.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="340">
+                  <caret line="101" column="5" lean-forward="false" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Level2State.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level2State.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="125">
+                  <caret line="100" column="5" lean-forward="false" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Level3State.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level3State.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="225">
+                  <caret line="131" column="5" lean-forward="false" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Level4State.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level4State.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="438">
+                  <caret line="95" column="22" lean-forward="false" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="22" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="GameState.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/GameState.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="493">
+                  <caret line="334" column="9" lean-forward="false" selection-start-line="334" selection-start-column="9" selection-end-line="334" selection-end-column="9" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#2203#2204#0" expanded="true" />
+                    <element signature="e#2224#2225#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MenuState.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/MenuState.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="273">
+                  <caret line="91" column="16" lean-forward="true" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="OptionsState.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/OptionsState.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="64" column="13" lean-forward="false" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PauseState.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/PauseState.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="319">
+                  <caret line="34" column="13" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+                  <folding>
+                    <element signature="e#538#539#0" expanded="true" />
+                    <element signature="e#558#559#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -104,21 +180,21 @@
         <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/enemies/XhelBat.java" />
         <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/Enemy.java" />
         <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/AcidState.java" />
-        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/PauseState.java" />
         <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/handlers/Content.java" />
         <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/tilemap/TileMap.java" />
         <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/audio/JukeBox.java" />
-        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/GameState.java" />
-        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level1State.java" />
-        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level2State.java" />
-        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level3State.java" />
-        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level4State.java" />
-        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/MenuState.java" />
-        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/OptionsState.java" />
         <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/main/GamePanel.java" />
         <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/Spirit.java" />
         <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/enemies/RedEnergy.java" />
         <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/entity/EnergyParticle.java" />
+        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/OptionsState.java" />
+        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/PauseState.java" />
+        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level4State.java" />
+        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level3State.java" />
+        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level2State.java" />
+        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level1State.java" />
+        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/GameState.java" />
+        <option value="$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/MenuState.java" />
       </list>
     </option>
   </component>
@@ -383,13 +459,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21208908" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21208908" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15416667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1961824" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1961824" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -411,7 +487,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level3State.java</url>
-          <line>240</line>
+          <line>196</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -696,39 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/PauseState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="27" column="64" lean-forward="false" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
-          <folding>
-            <element signature="e#538#539#0" expanded="true" />
-            <element signature="e#558#559#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/GameState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="313" column="34" lean-forward="true" selection-start-line="313" selection-start-column="34" selection-end-line="313" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1834#1835#0" expanded="true" />
-            <element signature="e#1855#1856#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level1State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1853">
-          <caret line="41" column="21" lean-forward="true" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/tilemap/TileMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="457">
@@ -745,56 +788,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level2State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="40" column="54" lean-forward="false" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level3State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="38" column="16" lean-forward="true" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/handlers/Content.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="44" column="39" lean-forward="false" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level4State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="264" column="32" lean-forward="false" selection-start-line="264" selection-start-column="32" selection-end-line="264" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/MenuState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="103" column="33" lean-forward="false" selection-start-line="103" selection-start-column="33" selection-end-line="103" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/OptionsState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="114" column="29" lean-forward="true" selection-start-line="114" selection-start-column="29" selection-end-line="114" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -851,6 +848,85 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/OptionsState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="64" column="13" lean-forward="false" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/PauseState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="34" column="13" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+          <folding>
+            <element signature="e#538#539#0" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level4State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="95" column="22" lean-forward="false" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level3State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="131" column="5" lean-forward="false" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level2State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="100" column="5" lean-forward="false" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/Level1State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="101" column="5" lean-forward="false" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/GameState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="334" column="9" lean-forward="false" selection-start-line="334" selection-start-column="9" selection-end-line="334" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2203#2204#0" expanded="true" />
+            <element signature="e#2224#2225#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/al/artofsoul/batbatgame/gamestate/MenuState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="91" column="16" lean-forward="true" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
           <folding />
         </state>
       </provider>

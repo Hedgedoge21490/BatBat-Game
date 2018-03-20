@@ -22,11 +22,6 @@ public class Level4State extends GameState {
 
     private String lvlboss = "level1boss";
 
-    private TopLeftPiece tlp;
-    private TopRightPiece trp;
-    private BottomLeftPiece blp;
-    private BottomRightPiece brp;
-
     private Spirit spirit;
 
     // events
@@ -96,45 +91,9 @@ public class Level4State extends GameState {
         brp.update();
     }
 
+    @Override
     public void draw(Graphics2D g) {
-
-        // draw background
-        temple.draw(g);
-
-        // draw tilemap
-        tileMap.draw(g);
-
-        // draw portal
-        portal.draw(g);
-
-        // draw enemies
-        for (int i = 0; i < enemies.size(); i++) {
-            enemies.get(i).draw(g);
-        }
-
-        // draw explosions
-        for (int i = 0; i < explosions.size(); i++) {
-            explosions.get(i).draw(g);
-        }
-
-        // draw angelspop
-        tlp.draw(g);
-        trp.draw(g);
-        blp.draw(g);
-        brp.draw(g);
-
-        // draw player
-        player.draw(g);
-
-        // draw hud
-        hud.draw(g);
-
-        // draw transition boxes
-        g.setColor(java.awt.Color.BLACK);
-        for (int i = 0; i < tb.size(); i++) {
-            g.fill(tb.get(i));
-        }
-
+        super.draw(g);
         // flash
         if (flash) {
             g.setColor(java.awt.Color.WHITE);

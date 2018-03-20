@@ -100,54 +100,6 @@ public class Level2State extends GameState {
         mountains.setPosition(tileMap.getx(), tileMap.gety());
     }
 
-    public void draw(Graphics2D g) {
-
-        // draw background
-
-        perendimi.draw(g);
-        mountains2.draw(g);
-
-        // draw tilemap
-        tileMap.draw(g);
-
-        // draw enemies
-        for (int i = 0; i < enemies.size(); i++) {
-            enemies.get(i).draw(g);
-        }
-
-        // draw enemy projectiles
-        for (int i = 0; i < eprojectiles.size(); i++) {
-            eprojectiles.get(i).draw(g);
-        }
-
-        // draw explosions
-        for (int i = 0; i < explosions.size(); i++) {
-            explosions.get(i).draw(g);
-        }
-
-        // draw player
-        player.draw(g);
-
-        // draw teleport
-        teleport.draw(g);
-
-        // draw hud
-        hud.draw(g);
-
-        // draw title
-        if (title != null)
-            title.draw(g);
-        if (subtitle != null)
-            subtitle.draw(g);
-
-        // draw transition boxes
-        g.setColor(java.awt.Color.BLACK);
-        for (int i = 0; i < tb.size(); i++) {
-            g.fill(tb.get(i));
-        }
-
-    }
-
     public void handleInput() {
         if (Keys.isPressed(Keys.ESCAPE))
             gsm.setPaused(true);

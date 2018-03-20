@@ -62,6 +62,7 @@ public class OptionsState extends GameState {
         handleInput();
     }
 
+    @Override
     public void draw(Graphics2D g) {
         // draw bg
         g.drawImage(bg, 0, 0, null);

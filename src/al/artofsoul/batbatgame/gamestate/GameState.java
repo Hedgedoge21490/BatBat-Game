@@ -2,6 +2,10 @@ package al.artofsoul.batbatgame.gamestate;
 
 import al.artofsoul.batbatgame.audio.JukeBox;
 import al.artofsoul.batbatgame.entity.*;
+import al.artofsoul.batbatgame.entity.batbat.BottomLeftPiece;
+import al.artofsoul.batbatgame.entity.batbat.BottomRightPiece;
+import al.artofsoul.batbatgame.entity.batbat.TopLeftPiece;
+import al.artofsoul.batbatgame.entity.batbat.TopRightPiece;
 import al.artofsoul.batbatgame.main.GamePanel;
 import al.artofsoul.batbatgame.tilemap.Background;
 import al.artofsoul.batbatgame.tilemap.TileMap;
@@ -63,6 +67,11 @@ public abstract class GameState {
 	//Level 4 specific
 	protected Portal portal;
 	protected boolean eventPortal;
+
+	protected TopLeftPiece tlp;
+	protected TopRightPiece trp;
+	protected BottomLeftPiece blp;
+	protected BottomRightPiece brp;
 
 	// events
 	protected boolean blockInput = false;
@@ -258,7 +267,73 @@ public abstract class GameState {
 		}
 	};
 
-	public abstract void draw(Graphics2D g);
+	public void draw(Graphics2D g) {
+		//draw background Levelspecific
+		switch(level){
+			case 1:
+				sky.draw(g);
+				clouds.draw(g);
+				mountains.draw(g);
+				break;
+			case 2:
+				perendimi.draw(g);
+				mountains2.draw(g);
+				break;
+			case 3:
+				temple.draw(g);
+				break;
+			case 4:
+				temple.draw(g);
+				break;
+			default:
+				break;
+		}
+		// draw tilemap
+		tileMap.draw(g);
+		//draw Portal
+		if(portal != null){
+			portal.draw(g);
+		}
+		// draw enemies
+		for (int i = 0; i < enemies.size(); i++) {
+			enemies.get(i).draw(g);
+		}
+		// draw enemy projectiles
+		for (int i = 0; i < eprojectiles.size(); i++) {
+			eprojectiles.get(i).draw(g);
+		}
+		// draw explosions
+		for (int i = 0; i < explosions.size(); i++) {
+			explosions.get(i).draw(g);
+		}
+		// draw angelspop
+		if(level == 4){
+			tlp.draw(g);
+			trp.draw(g);
+			blp.draw(g);
+			brp.draw(g);
+		}
+		// draw player
+		player.draw(g);
+		//draw teleport
+		if(level != 4){
+			teleport.draw(g);
+		}
+		// draw hud
+		hud.draw(g);
+		//draw title
+		if(level != 4){
+			if (title != null)
+				title.draw(g);
+			if (subtitle != null)
+				subtitle.draw(g);
+		}
+		// draw transition boxes
+		g.setColor(java.awt.Color.BLACK);
+		for (int i = 0; i < tb.size(); i++) {
+			g.fill(tb.get(i));
+		}
+	}
 
 	public abstract void handleInput();
 
