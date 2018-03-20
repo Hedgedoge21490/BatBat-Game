@@ -62,6 +62,7 @@ public class TileMap {
 		setPosition(x, y);
 		setTween(tween);
 	}
+
 	
 	public void loadTiles(String s) {
 		

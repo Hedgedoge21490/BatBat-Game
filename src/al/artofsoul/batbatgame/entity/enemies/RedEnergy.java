@@ -16,7 +16,9 @@ public class RedEnergy extends Enemy {
 	
 	private BufferedImage[] startSprites;
 	private BufferedImage[] sprites;
-	
+
+
+
 	private boolean start;
 	private boolean permanent;
 	
@@ -28,9 +30,9 @@ public class RedEnergy extends Enemy {
 	private int bounceCount = 0;
 	
 	public RedEnergy(TileMap tm) {
-		
 		super(tm);
-		
+		drawFlag = 1;
+
 		health = maxHealth = 1;
 		
 		width = 20;
@@ -108,27 +110,5 @@ public class RedEnergy extends Enemy {
 		
 	}
 
-	@Override
-	public void draw(java.awt.Graphics2D g) {
-		setMapPosition();
-		if(facingRight) {
-			g.drawImage(
-					animation.getImage(),
-					(int)(x + xmap - width / 2.0),
-					(int)(y + ymap - height / 2.0),
-					null
-			);
-		}
-		else {
-			g.drawImage(
-					animation.getImage(),
-					(int)(x + xmap - width / 2.0 + width),
-					(int)(y + ymap - height / 2.0),
-					-width,
-					height,
-					null
-			);
-		}
-	}
 
 }

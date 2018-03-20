@@ -31,11 +31,14 @@ public class AcidState extends GameState {
 			"/Sprites/Player/PlayerSprites.gif"
 			)).getSubimage(0, 0, 40, 40);
 		}
-		catch(Exception e) {}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void init() {/*Leer weil vermutlich nicht benötigt. Aber muss da sein wegen abstract class undso.*/}
-	
+
+	@Override
 	public void update() {
 		handleInput();
 		color = Color.getHSBColor(hue, 1f, 1f);

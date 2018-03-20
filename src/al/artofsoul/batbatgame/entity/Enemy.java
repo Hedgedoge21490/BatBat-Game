@@ -17,6 +17,8 @@ public class Enemy extends MapObject {
 	protected boolean dead;
 	protected int damage;
 	protected boolean remove;
+
+	public int drawFlag = 0;
 	
 	protected boolean flinching;
 	protected long flinchCount;
@@ -55,7 +57,14 @@ public class Enemy extends MapObject {
 		}
 	}
 
+	@Override
 	public void draw(Graphics2D g) {
+
+		if(drawFlag == 1){
+			super.draw(g);
+			return;
+		}
+
 		if(flinching && (flinchCount == 0 || flinchCount == 2)) {
 			return;
 		}
