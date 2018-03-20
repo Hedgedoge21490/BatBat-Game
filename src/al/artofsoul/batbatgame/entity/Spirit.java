@@ -16,7 +16,7 @@ import al.artofsoul.batbatgame.tilemap.TileMap;
 
 public class Spirit extends Enemy {
 	
-	public BufferedImage[] sprites;
+	private BufferedImage[] sprites;
 	private Player player;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Explosion> explosions;

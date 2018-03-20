@@ -23,9 +23,9 @@ public class RedEnergy extends Enemy {
 	private boolean permanent;
 	
 	private int type = 0;
-	public static int vector = 0;
-	public static int gravity = 1;
-	public static int bounce = 2;
+	public static final int vector = 0;
+	public static final int gravity = 1;
+	public static final int bounce = 2;
 	
 	private int bounceCount = 0;
 	

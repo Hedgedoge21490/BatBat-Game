@@ -17,10 +17,10 @@ public class EnergyParticle extends MapObject {
 	
 	private BufferedImage[] sprites;
 	
-	public static int updir = 0;
-	public static int leftdir = 1;
-	public static int downdir = 2;
-	public static int rightdir = 3;
+	public static final int updir = 0;
+	public static final int leftdir = 1;
+	public static final int downdir = 2;
+	public static final int rightdir = 3;
 	
 	public EnergyParticle(TileMap tm, double x, double y, int dir) {
 		super(tm);
