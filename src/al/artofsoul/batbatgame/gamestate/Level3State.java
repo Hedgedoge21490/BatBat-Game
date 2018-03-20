@@ -127,22 +127,8 @@ public class Level3State extends GameState {
         // move backgrounds
         temple.setPosition(tileMap.getx(), tileMap.gety());
 
-
-
     }
 
-    public void handleInput() {
-        if (Keys.isPressed(Keys.ESCAPE)) gsm.setPaused(true);
-        if (blockInput || player.getHealth() == 0) return;
-        player.setUp(Keys.keyState[Keys.UP]);
-        player.setLeft(Keys.keyState[Keys.LEFT]);
-        player.setDown(Keys.keyState[Keys.DOWN]);
-        player.setRight(Keys.keyState[Keys.RIGHT]);
-        player.setJumping(Keys.keyState[Keys.BUTTON1]);
-        player.setDashing(Keys.keyState[Keys.BUTTON2]);
-        if (Keys.isPressed(Keys.BUTTON3)) player.setAttacking();
-        if (Keys.isPressed(Keys.BUTTON4)) player.setCharging();
-    }
 
 ///////////////////////////////////////////////////////
 //////////////////// EVENTS

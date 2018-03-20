@@ -6,6 +6,7 @@ import al.artofsoul.batbatgame.entity.batbat.BottomLeftPiece;
 import al.artofsoul.batbatgame.entity.batbat.BottomRightPiece;
 import al.artofsoul.batbatgame.entity.batbat.TopLeftPiece;
 import al.artofsoul.batbatgame.entity.batbat.TopRightPiece;
+import al.artofsoul.batbatgame.handlers.Keys;
 import al.artofsoul.batbatgame.main.GamePanel;
 import al.artofsoul.batbatgame.tilemap.Background;
 import al.artofsoul.batbatgame.tilemap.TileMap;
@@ -334,8 +335,19 @@ public abstract class GameState {
 			g.fill(tb.get(i));
 		}
 	}
-
-	public abstract void handleInput();
+	
+	public void handleInput(){
+		if (Keys.isPressed(Keys.ESCAPE)) gsm.setPaused(true);
+		if (blockInput || player.getHealth() == 0) return;
+		player.setUp(Keys.keyState[Keys.UP]);
+		player.setLeft(Keys.keyState[Keys.LEFT]);
+		player.setDown(Keys.keyState[Keys.DOWN]);
+		player.setRight(Keys.keyState[Keys.RIGHT]);
+		player.setJumping(Keys.keyState[Keys.BUTTON1]);
+		player.setDashing(Keys.keyState[Keys.BUTTON2]);
+		if (Keys.isPressed(Keys.BUTTON3)) player.setAttacking();
+		if (Keys.isPressed(Keys.BUTTON4)) player.setCharging();
+	}
 
 	///////////////////
 	//STANDARD EVENTS//

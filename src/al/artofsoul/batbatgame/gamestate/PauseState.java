@@ -40,7 +40,8 @@ public class PauseState extends GameState {
 		g.setFont(font);
 		g.drawString("Game Paused", 110, 110);
 	}
-	
+
+	@Override
 	public void handleInput() {
 		if(Keys.isPressed(Keys.ESCAPE)) gsm.setPaused(false);
 		if(Keys.isPressed(Keys.BUTTON1)) {
